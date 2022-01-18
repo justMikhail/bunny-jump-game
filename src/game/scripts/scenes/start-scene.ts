@@ -3,7 +3,9 @@ import * as Phaser from 'phaser';
 import { SceneRoute } from '../const/project-routes';
 import CounterFps from '../prefabs/counter-fps';
 
-import { createMenuButton } from '../ui/button';
+import { createMenuButton } from '../ui/menuButton';
+import {DataBase} from '../utils/data-base';
+import {SpriteNames} from '../const/asset-keys';
 
 export default class StartScene extends Phaser.Scene {
   fpsCounter;
@@ -15,22 +17,29 @@ export default class StartScene extends Phaser.Scene {
   create() {
     console.log('start-scene');
     this.createInfoForDeveloper();
+    this.createBackground();
+    this.createMenuButtons();
+  }
 
-    const btn = createMenuButton({
+  createMenuButtons() {
+    const playButton = createMenuButton({
       scene: this,
       text: 'Play',
       x: 100,
       y: 200,
     });
 
-    btn.on('pointerdown', () => {
-      console.log('play!!!');
+    playButton.on('pointerdown', () => {
       this.scene.start(SceneRoute.Level1);
     });
   }
 
   update() {
     this.fpsCounter.update();
+  }
+
+  createBackground() {
+    this.add.sprite(DataBase.ScreenWidth * 0.5, DataBase.ScreenHeight * 0.5, SpriteNames.Level1BgSky);
   }
 
   createInfoForDeveloper() {

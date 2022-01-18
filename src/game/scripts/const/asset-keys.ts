@@ -1,3 +1,3 @@
-export const AssetKey = {
-  Level1BgSky: 'lvl-1_bg-sky',
-} as const;
+export enum SpriteNames {
+  Level1BgSky = 'lvl-1_bg-sky',
+}

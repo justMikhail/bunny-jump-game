@@ -2,7 +2,7 @@ import 'phaser';
 
 // utils
 import { SceneRoute } from '../const/project-routes';
-import { AssetKey } from '../const/asset-keys';
+import { SpriteNames } from '../const/asset-keys';
 
 // Prefabs
 import CounterFps from '../prefabs/counter-fps';
@@ -11,7 +11,7 @@ export default class BootScene extends Phaser.Scene {
   fpsCounter;
 
   preload() {
-    this.load.image(AssetKey.Level1BgSky, '../img/sprites/backgrounds/bg_lvl-1-sky.png');
+    this.load.image(SpriteNames.Level1BgSky, '../img/sprites/backgrounds/bg_lvl-1-sky.png');
   }
 
   create() {
