@@ -1,4 +1,4 @@
-export default class CounterFPS extends Phaser.GameObjects.Text {
+export default class CounterFps extends Phaser.GameObjects.Text {
   constructor(scene) {
     super(scene, 10, 10, '', { color: 'black', fontSize: '28px' });
     scene.add.existing(this);

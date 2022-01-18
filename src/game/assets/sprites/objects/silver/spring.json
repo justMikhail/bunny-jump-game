@@ -1,0 +1,44 @@
+{"frames": [
+
+{
+	"filename": "gold_1",
+	"frame": {"x":1,"y":1,"w":84,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":84},
+	"sourceSize": {"w":84,"h":84}
+},
+{
+	"filename": "gold_2",
+	"frame": {"x":86,"y":1,"w":66,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":84},
+	"sourceSize": {"w":66,"h":84}
+},
+{
+	"filename": "gold_3",
+	"frame": {"x":153,"y":1,"w":50,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":84},
+	"sourceSize": {"w":50,"h":84}
+},
+{
+	"filename": "gold_4",
+	"frame": {"x":204,"y":1,"w":15,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":84},
+	"sourceSize": {"w":15,"h":84}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spring.png",
+	"format": "RGBA8888",
+	"size": {"w":220,"h":86},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9f253ad058f97a3a2af75e5f0c68067e:ba45e6b87f3f23a3c4d075629249f15c:13ea7af503572db800483f0ae7d1c5c8$"
+}
+}

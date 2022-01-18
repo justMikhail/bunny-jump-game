@@ -1,40 +1,50 @@
-import 'phaser';
+import * as Phaser from 'phaser';
 
 // Other
-import { DataBase } from './utils/DataBase';
-import GameColor from './const/GameColor';
+import { DataBase } from './utils/data-base';
+import { GameColor } from './const/game-color';
 
 // Scenes
-import PreloadScene from './scenes/PreloadScene';
-import ExampleScene from './scenes/ExampleScene';
+import BootScene from './scenes/boot-scene';
+import PreloadScene from './scenes/preload-scene';
+import StartScene from './scenes/start-scene';
+import GameOverScene from './scenes/game-over-scene';
+import Level1Scene from './scenes/level-1-scene';
 
-const initGame = (gameWidth, gameHeight, gameContainer) => {
-  const mainGameConfig = {
+const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
+  const mainGameConfig: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
     width: gameWidth,
     height: gameHeight,
-    backgroundColor: GameColor.Example,
+    backgroundColor: GameColor.MainBackgroundColor,
     parent: gameContainer,
     scale: {
       mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
+      zoom: 1,
     },
     physics: {
       default: 'arcade',
       arcade: {
         debug: true,
-        gravity: { y: DataBase.BasicGravityForce },
+        gravity: {
+          x: DataBase.GravityForce.BasicX,
+          y: DataBase.GravityForce.BasicY,
+        },
       },
     },
     scene: [
+      BootScene,
       PreloadScene,
-      ExampleScene,
+      StartScene,
+      Level1Scene,
+      GameOverScene,
     ],
   };
 
   return new Phaser.Game(mainGameConfig);
 };
 
-window.addEventListener('DOMContentLoaded', () => {
-  initGame(DataBase.GameScreenWidth, DataBase.GameScreenHeight, 'phaser-game');
+window.addEventListener('load', () => {
+  initGame(DataBase.GameContainerId, DataBase.ScreenWidth, DataBase.ScreenHeight);
 });

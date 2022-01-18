@@ -1,7 +1,11 @@
 export const DataBase = {
-  GameScreenWidth: 1280,
-  GameScreenHeight: 720,
-  BasicGravityForce: 500,
+  GameContainerId: 'phaser-game',
+  ScreenWidth: window.innerWidth,
+  ScreenHeight: window.innerHeight,
+  GravityForce: {
+    BasicY: 0,
+    BasicX: 1.2,
+  },
   player: {
     basicSpeed: 0,
     rightSpeed: 300,
