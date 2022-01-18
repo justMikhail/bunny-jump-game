@@ -1,0 +1,26 @@
+$gap: 30px;
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  padding-left: calc(#{$gap} / 2);
+  padding-right: calc(#{$gap} / 2);
+  margin: auto;
+
+  @media (max-width: #{screen(xl)}) {
+    max-width: #{screen(lg)};
+  }
+
+  @media (max-width: #{screen(lg)}) {
+    max-width: #{screen(md)};
+  }
+
+  @media (max-width: #{screen(md)}) {
+    max-width: #{screen(sm)};
+  }
+
+  @media (max-width: #{screen(sm)}) {
+    max-width: #{screen(xs)};
+  }
+}
