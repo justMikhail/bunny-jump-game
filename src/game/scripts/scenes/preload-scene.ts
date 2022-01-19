@@ -20,12 +20,13 @@ export default class PreloadScene extends BootScene {
     this.load.image(TextureKeys.Lvl1Bg5, '../img/sprites/backgrounds/lvl-1/bg5.png');
     // player
     this.load.atlas(
-      'player',
+      TextureKeys.PlayerSkin,
       '../img/sprites/player/basic-skin/bunny-basic-skin.png',
       '../img/sprites/player/basic-skin/bunny-basic-skin.json',
     );
     // platforms
-    this.load.image(TextureKeys.Lvl1Bg1, '../img/sprites/objects/platforms/');
+    this.load.image(TextureKeys.BasicPlatform, '../img/sprites/platforms/ground_stone.png');
+    this.load.image(TextureKeys.BrokenPlatform, '../img/sprites/platforms/ground_stone_broken.png');
     // items
 
     // sounds

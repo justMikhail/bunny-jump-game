@@ -15,6 +15,7 @@ export default class Level1Scene extends Phaser.Scene {
     console.log('level-1-scene');
     this.createBackground();
     this.createInfoForDeveloper();
+    this.createPlatforms();
   }
 
   update() {
@@ -23,6 +24,8 @@ export default class Level1Scene extends Phaser.Scene {
 
   createBackground() {
     const { width, height } = this.scale;
+
+    console.log(this.scale)
 
     this.add
       .image(width * 0.5, height * 0.5, TextureKeys.Lvl1Bg1)
@@ -41,6 +44,10 @@ export default class Level1Scene extends Phaser.Scene {
       .image(width * 0.5, height, TextureKeys.Lvl1Bg5)
       .setOrigin(0.5, 1)
       .setScale(0.4);
+  }
+
+  createPlatforms() {
+    this.add.image(200, 200, TextureKeys.BasicPlatform);
   }
 
   createInfoForDeveloper() {

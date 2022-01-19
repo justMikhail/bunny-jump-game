@@ -30,7 +30,9 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
     parent: gameContainer,
     scale: {
       // The game will be scaled manually in the resize()
-      mode: Phaser.Scale.NONE,
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      // mode: Phaser.Scale.NONE,
       zoom: 1,
     },
     physics: {
@@ -56,11 +58,11 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  const initializedGame = initGame(DataBase.GameContainerId, DataBase.DefaultScreenWidth, DataBase.DefaultScreenHeight);
+  const initializedGame = initGame(DataBase.GameContainerId, window.innerWidth, window.innerHeight);
 
   window.addEventListener('resize', (event) => {
-    resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
+    // resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
   });
 
-  resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
+  // resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
 });
