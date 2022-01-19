@@ -4,8 +4,8 @@ import { SceneRoute } from '../const/project-routes';
 import CounterFps from '../prefabs/counter-fps';
 
 import { createMenuButton } from '../ui/menuButton';
-import {DataBase} from '../utils/data-base';
-import {SpriteNames} from '../const/asset-keys';
+import { DataBase } from '../utils/data-base';
+import { SpriteName } from '../const/asset-keys';
 
 export default class StartScene extends Phaser.Scene {
   fpsCounter;
@@ -19,6 +19,7 @@ export default class StartScene extends Phaser.Scene {
     this.createInfoForDeveloper();
     this.createBackground();
     this.createMenuButtons();
+    this.scene.start(SceneRoute.Level1);
   }
 
   createMenuButtons() {
@@ -39,7 +40,7 @@ export default class StartScene extends Phaser.Scene {
   }
 
   createBackground() {
-    this.add.sprite(DataBase.ScreenWidth * 0.5, DataBase.ScreenHeight * 0.5, SpriteNames.Level1BgSky);
+    this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, SpriteName.StartMenuBg);
   }
 
   createInfoForDeveloper() {
@@ -52,6 +53,6 @@ export default class StartScene extends Phaser.Scene {
         color: '#000000',
         fontSize: '24px',
       })
-      .setOrigin(1, 0);
+      .setOrigin(0, 1);
   }
 }
