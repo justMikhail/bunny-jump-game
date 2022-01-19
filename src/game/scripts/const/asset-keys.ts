@@ -1,4 +1,4 @@
-export enum SpriteName {
+export enum TextureKeys {
   StartMenuBg = 'start-menu-bg',
 
   Lvl1Bg1 = 'lvl-1-bg-1',

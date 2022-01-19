@@ -4,7 +4,7 @@ import { SceneRoute } from '../const/project-routes';
 import CounterFps from '../prefabs/counter-fps';
 
 import { DataBase } from '../utils/data-base';
-import { SpriteName } from '../const/asset-keys';
+import { TextureKeys } from '../const/asset-keys';
 
 export default class StartScene extends Phaser.Scene {
   fpsCounter;
@@ -25,7 +25,7 @@ export default class StartScene extends Phaser.Scene {
   }
 
   createBackground() {
-    this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, SpriteName.StartMenuBg);
+    this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, TextureKeys.StartMenuBg);
   }
 
   createInfoForDeveloper() {

@@ -1,8 +1,7 @@
 import * as Phaser from 'phaser';
 
-import { DataBase } from '../utils/data-base';
 import { SceneRoute } from '../const/project-routes';
-import { SpriteName } from '../const/asset-keys';
+import { TextureKeys } from '../const/asset-keys';
 import CounterFps from '../prefabs/counter-fps';
 
 export default class Level1Scene extends Phaser.Scene {
@@ -23,10 +22,25 @@ export default class Level1Scene extends Phaser.Scene {
   }
 
   createBackground() {
+    const { width, height } = this.scale;
+
     this.add
-      .sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, SpriteName.Lvl1Bg1);
+      .image(width * 0.5, height * 0.5, TextureKeys.Lvl1Bg1)
+      .setScale(0.4);
     this.add
-      .sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, SpriteName.Lvl1Bg2);
+      .image(width * 0.5, height * 0.5, TextureKeys.Lvl1Bg2)
+      .setScale(0.4);
+    this.add
+      .image(width * 0.5, height * 0.5, TextureKeys.Lvl1Bg3)
+      .setScale(0.4);
+    this.add
+      .image(0, 0, TextureKeys.Lvl1Bg4)
+      .setOrigin(0)
+      .setDisplaySize(width, height);
+    this.add
+      .image(width * 0.5, height, TextureKeys.Lvl1Bg5)
+      .setOrigin(0.5, 1)
+      .setScale(0.4);
   }
 
   createInfoForDeveloper() {
