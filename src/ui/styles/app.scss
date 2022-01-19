@@ -1,7 +1,9 @@
+// common
+@import "includes";
 @import "vars";
 @import "functions";
 @import "mixins";
-@import "includes";
 @import "base";
-@import "components/content";
+
+// components
 @import "components/grid";
