@@ -5,8 +5,8 @@ export const DataBase = {
   MaxScreenWidth: 600,
   MaxScreenHeight: 1000,
   GravityForce: {
-    BasicY: 0,
-    BasicX: 1.2,
+    BasicY: 400,
+    BasicX: 0,
   },
   player: {
     basicSpeed: 0,
