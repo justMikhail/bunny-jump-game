@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
     super(scene, x, y, texture, frame);
 
     this.init();
@@ -16,10 +16,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.body.checkCollision.right = false;
   }
 
+  static generate(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
+    return new Player(scene, x, y, texture, frame);
+  }
+
   addMovement(cursors: Phaser.Types.Input.Keyboard.CursorKeys) {
     const speed = 300;
 
-    // this.setVelocity(0);
+    this.setVelocity(0); // todo
 
     if (cursors.left.isDown) {
       this.setVelocityX(-speed);
