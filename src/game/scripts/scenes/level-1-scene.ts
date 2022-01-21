@@ -6,15 +6,14 @@ import CounterFps from '../prefabs/counter-fps';
 import { FrameKey } from '../const/frame-key';
 
 import Player from '../prefabs/player';
-import Platform from '../prefabs/platform';
-import PlayAnimation = Phaser.Actions.PlayAnimation;
+import PlatformGroup from '../prefabs/platform-group';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
 
   player;
 
-  basicPlatforms: Phaser.Physics.Arcade.StaticGroup;
+  basicPlatforms: PlatformGroup;
 
   Lvl1Bg1;
 
@@ -108,23 +107,25 @@ export default class Level1Scene extends Phaser.Scene {
   }
 
   createPlatforms() {
-    const platformItem = Platform.generate(this, 250, 500, TextureKey.BasicPlatform).setScale(0.4);
-    this.basicPlatforms = this.physics.add.staticGroup();
-    this.basicPlatforms.add(platformItem);
-    console.log(this.basicPlatforms);
+    this.basicPlatforms = new PlatformGroup(this);
+    this.basicPlatforms.createPlatforms();
+    // const platformItem = Platform.generate(this, 250, 500, TextureKey.BasicPlatform).setScale(0.4);
+    // this.basicPlatforms = this.physics.add.staticGroup();
+    // this.basicPlatforms.add(platformItem);
+    // console.log(this.basicPlatforms);
+    //
+    // const platformsCount = 5;
+    // const { width } = this.scale;
+    //
+    // for (let i = 0; i < platformsCount; i += 1) {
+    //   const x = Phaser.Math.Between(width * 0.5, width * 0.5);
+    //   const y = 200 * i;
+    //
+    //   const platform = new Platform(this, x, y, TextureKey.BasicPlatform).setScale(0.4);
 
-    const platformsCount = 5;
-    const { width } = this.scale;
-
-    for (let i = 0; i < platformsCount; i += 1) {
-      const x = Phaser.Math.Between(width * 0.5, width * 0.5);
-      const y = 200 * i;
-
-      const platform = new Platform(this, x, y, TextureKey.BasicPlatform).setScale(0.4);
-
-      // const { body } = platform;
-      // body.updateFromGameObject();
-    }
+    // const { body } = platform;
+    // body.updateFromGameObject();
+    // }
   }
 
   createPlayer() {
