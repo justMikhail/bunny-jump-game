@@ -3,12 +3,14 @@ import * as Phaser from 'phaser';
 import { SceneKeys } from '../const/scene-keys';
 import { TextureKey } from '../const/texture-key';
 import CounterFps from '../prefabs/counter-fps';
-import { AnimationKey } from '../const/animation-key';
+import { FrameKey } from '../const/frame-key';
+
+import Player from '../prefabs/player';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
 
-  player: Phaser.Physics.Arcade.Sprite;
+  player;
 
   basicPlatforms: Phaser.Physics.Arcade.StaticGroup;
 
@@ -22,17 +24,22 @@ export default class Level1Scene extends Phaser.Scene {
 
   Lvl1Bg5;
 
+  cursors;
+
   constructor() {
     super({ key: SceneKeys.Level1 });
   }
 
   create() {
+    const { width, height } = this.scale;
     console.log('level-1-scene');
     this.createBackground();
     this.createPlatforms();
     this.createPlayer();
     this.addColliders();
     this.createInfoForDeveloper();
+
+    this.cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main
       .startFollow(this.player)
@@ -43,8 +50,9 @@ export default class Level1Scene extends Phaser.Scene {
   update() {
     this.fpsCounter.update();
 
-    const touchingDown = this.player.body.touching.down;
+    this.player.addMovement(this.cursors);
 
+    const touchingDown = this.player.body.touching.down;
     if (touchingDown) {
       this.player.setVelocityY(-400);
     }
@@ -59,7 +67,7 @@ export default class Level1Scene extends Phaser.Scene {
       }
     });
 
-    this.Lvl1Bg1.tilePositionY += 0.5;
+    // this.Lvl1Bg4.tilePositionY -= 1.5;
   }
 
   createBackground() {
@@ -68,20 +76,27 @@ export default class Level1Scene extends Phaser.Scene {
     this.Lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
-      .setScrollFactor(1, 0);
+      .setScrollFactor(0, 0);
 
-    // this.Lvl1Bg1 = this.add
-    //   .tileSprite(width * 0.5, height * 0.5, width, height, TextureKey.Lvl1Bg1);
     this.Lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
       .setScale(0.4);
+
     this.Lvl1Bg3 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg3)
       .setScale(0.4);
+
+    // this.Lvl1Bg4 = this.add
+    //   .image(0, 0, TextureKey.Lvl1Bg4)
+    //   .setOrigin(0)
+    //   .setDisplaySize(width, height);
+
     this.Lvl1Bg4 = this.add
-      .image(0, 0, TextureKey.Lvl1Bg4)
-      .setOrigin(0)
-      .setDisplaySize(width, height);
+      .tileSprite(0, 0, width, height, TextureKey.Lvl1Bg4)
+      .setOrigin(0);
+
+    this.Lvl1Bg4.width = width;
+
     this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
@@ -107,13 +122,13 @@ export default class Level1Scene extends Phaser.Scene {
   createPlayer() {
     const { width, height } = this.scale;
 
-    this.player = this.physics.add
-      .sprite(width * 0.5, height * 0.5, TextureKey.Player.AlternativeSkin, AnimationKey.Player.AlternativeSkin.Stand)
-      .setScale(0.4);
-
-    this.player.body.checkCollision.up = false;
-    this.player.body.checkCollision.left = false;
-    this.player.body.checkCollision.right = false;
+    this.player = new Player(
+      this,
+      width * 0.5,
+      height * 0.5,
+      TextureKey.Player.AlternativeSkin,
+      FrameKey.Player.AlternativeSkin.Stand,
+    ).setScale(0.4);
   }
 
   addColliders() {

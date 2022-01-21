@@ -1,4 +1,4 @@
-export const AnimationKey = {
+export const FrameKey = {
   Player: {
     BasicSkin: {
       Stand: 'bunny1_stand',
