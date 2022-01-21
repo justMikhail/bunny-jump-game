@@ -12,6 +12,16 @@ export default class Level1Scene extends Phaser.Scene {
 
   basicPlatforms: Phaser.Physics.Arcade.StaticGroup;
 
+  Lvl1Bg1;
+
+  Lvl1Bg2;
+
+  Lvl1Bg3;
+
+  Lvl1Bg4;
+
+  Lvl1Bg5;
+
   constructor() {
     super({ key: SceneKeys.Level1 });
   }
@@ -22,8 +32,12 @@ export default class Level1Scene extends Phaser.Scene {
     this.createPlatforms();
     this.createPlayer();
     this.addColliders();
-    console.log(this.cameras.main);
     this.createInfoForDeveloper();
+
+    this.cameras.main
+      .startFollow(this.player)
+      .setFollowOffset(0, 100)
+      .setLerp(1, 0.1);
   }
 
   update() {
@@ -35,35 +49,40 @@ export default class Level1Scene extends Phaser.Scene {
       this.player.setVelocityY(-400);
     }
 
-    this.basicPlatforms.children.iterate((child) => {
-      const platform: Phaser.Physics.Arcade.Sprite = child;
-      const scrollY = this.cameras.main.scrollY;
+    this.basicPlatforms.children.iterate((child: Phaser.Physics.Arcade.Sprite) => {
+      const platform = child;
+      const { scrollY } = this.cameras.main;
 
-      if (platform.y >= scrollY + this.scale.height) {
+      if (child.y >= scrollY + this.scale.height) {
         platform.y = scrollY - 100;
         platform.body.updateFromGameObject();
       }
     });
+
+    this.Lvl1Bg1.tilePositionY += 0.5;
   }
 
   createBackground() {
     const { width, height } = this.scale;
 
-    this.add
+    this.Lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
       .setScrollFactor(1, 0);
-    this.add
+
+    // this.Lvl1Bg1 = this.add
+    //   .tileSprite(width * 0.5, height * 0.5, width, height, TextureKey.Lvl1Bg1);
+    this.Lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
       .setScale(0.4);
-    this.add
+    this.Lvl1Bg3 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg3)
       .setScale(0.4);
-    this.add
+    this.Lvl1Bg4 = this.add
       .image(0, 0, TextureKey.Lvl1Bg4)
       .setOrigin(0)
       .setDisplaySize(width, height);
-    this.add
+    this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
       .setScale(0.4);
@@ -95,8 +114,6 @@ export default class Level1Scene extends Phaser.Scene {
     this.player.body.checkCollision.up = false;
     this.player.body.checkCollision.left = false;
     this.player.body.checkCollision.right = false;
-
-    this.cameras.main.startFollow(this.player);
   }
 
   addColliders() {

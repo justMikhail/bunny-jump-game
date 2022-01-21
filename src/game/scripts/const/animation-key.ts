@@ -7,4 +7,4 @@ export const AnimationKey = {
       Stand: 'bunny2_stand',
     },
   },
-};
+} as const;

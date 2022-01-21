@@ -3,6 +3,7 @@ import { SceneKeys } from '../const/scene-keys';
 // scenes
 import BootScene from './boot-scene';
 import { TextureKey } from '../const/texture-key';
+import { DataBase } from '../utils/data-base';
 
 // objects
 
@@ -34,7 +35,12 @@ export default class PreloadScene extends BootScene {
 
   create() {
     console.log('preload-scene');
+    this.createBackground();
     super.createInfoForDeveloper();
     this.scene.start(SceneKeys.Start);
+  }
+
+  createBackground() {
+    this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, TextureKey.StartMenuBg);
   }
 }
