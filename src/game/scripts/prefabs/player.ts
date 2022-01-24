@@ -14,6 +14,8 @@ export default class Player extends Unit {
   constructor(scene: Phaser.Scene, x: number, y: number, skinTexture: string, frame?: string) {
     super(scene, x, y, skinTexture, frame);
 
+    this.scene.events.on('update', this.update, this);
+
     // KEYS
     this.keyW = this.scene.input.keyboard.addKey('W');
     this.keyA = this.scene.input.keyboard.addKey('A');
@@ -35,9 +37,17 @@ export default class Player extends Unit {
     return new Player(scene, x, y, texture, frame);
   }
 
+  update() {
+    this.addMovement();
+    const touchingDown = this.getBody().touching.down;
+    if (touchingDown) {
+      this.getBody().setVelocityY(-400);
+    }
+  }
+
   addMovement(): void {
     const speed = 200;
-    this.getBody().setVelocity(0);
+    // this.getBody().setVelocity(0);
 
     if (this.keyW?.isDown) {
       this.body.velocity.y = -speed;

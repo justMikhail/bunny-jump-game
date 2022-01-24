@@ -1,9 +1,9 @@
 import * as Phaser from 'phaser';
-// const
+// ------const-----
 import { SceneKeys } from '../const/scene-keys';
 import { TextureKey } from '../const/texture-key';
 import { FrameKey } from '../const/frame-key';
-// classes
+// ------classes-----
 import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
@@ -41,13 +41,6 @@ export default class Level1Scene extends Phaser.Scene {
 
   update(): void {
     this.fpsCounter.update();
-    this.player.addMovement();
-    // this.player.addMovement(this.cursors);
-
-    // const touchingDown = this.player.body.touching.down;
-    // if (touchingDown) {
-    //   // this.player.setVelocityY(-400);
-    // }
   }
 
   createBackground(): void {
@@ -78,7 +71,7 @@ export default class Level1Scene extends Phaser.Scene {
 
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
-    this.basicPlatforms.createPlatforms(6);
+    this.basicPlatforms.createPlatforms(6, 0.3);
   }
 
   createPlayer(positionX, positionY): void {
