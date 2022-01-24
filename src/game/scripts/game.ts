@@ -29,10 +29,9 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
     backgroundColor: GameColor.MainBackgroundColor,
     parent: gameContainer,
     scale: {
-      // The game will be scaled manually in the resize()
-      mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH,
-      // mode: Phaser.Scale.NONE,
+      // mode: Phaser.Scale.FIT,
+      // autoCenter: Phaser.Scale.CENTER_BOTH,
+      mode: Phaser.Scale.NONE,
       zoom: 1,
     },
     physics: {
@@ -58,13 +57,20 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  // const initializedGame = initGame(DataBase.GameContainerId, window.innerWidth, window.innerHeight);
+  const initialized = initGame(DataBase.GameContainerId, window.innerWidth, window.innerHeight);
 
-  initGame(DataBase.GameContainerId, window.innerWidth, window.innerHeight);
+  const sizeChanged = () => {
+    if (initialized.isBooted) {
+      setTimeout(() => {
+        initialized.scale.resize(window.innerWidth, window.innerHeight);
 
-  // window.addEventListener('resize', (event) => {
-  //  resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
-  // });
+        initialized.canvas.setAttribute(
+          'style',
+          `display: block; width: ${window.innerWidth}px; height: ${window.innerHeight}px;`,
+        );
+      }, 100);
+    }
+  };
 
-  // resizeGame(initializedGame, defaultScreenWidth, defaultScreenHeight, maxScreenWidth, maxScreenHeight, scaleMode);
+  window.onresize = () => sizeChanged();
 });
