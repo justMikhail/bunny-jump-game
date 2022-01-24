@@ -1,109 +1,103 @@
 import * as Phaser from 'phaser';
-
+// const
 import { SceneKeys } from '../const/scene-keys';
 import { TextureKey } from '../const/texture-key';
+import { FrameKey } from '../const/frame-key';
+// classes
 import CounterFps from '../prefabs/counter-fps';
-import { AnimationKey } from '../const/animation-key';
+import PlatformGroup from '../prefabs/platform-group';
+import Player from '../prefabs/player';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
 
-  player: Phaser.Physics.Arcade.Sprite;
+  player;
 
-  basicPlatforms: Phaser.Physics.Arcade.StaticGroup;
+  basicPlatforms: PlatformGroup;
+
+  Lvl1Bg1;
+
+  Lvl1Bg2;
+
+  Lvl1Bg3;
+
+  Lvl1Bg4;
+
+  Lvl1Bg5;
 
   constructor() {
     super({ key: SceneKeys.Level1 });
   }
 
-  create() {
+  create(): void {
+    const { width, height } = this.scale;
     console.log('level-1-scene');
     this.createBackground();
     this.createPlatforms();
-    this.createPlayer();
+    this.createPlayer(width * 0.5, height * 0.5);
     this.addColliders();
-    console.log(this.cameras.main);
     this.createInfoForDeveloper();
   }
 
-  update() {
+  update(): void {
     this.fpsCounter.update();
+    this.player.addMovement();
+    // this.player.addMovement(this.cursors);
 
-    const touchingDown = this.player.body.touching.down;
-
-    if (touchingDown) {
-      this.player.setVelocityY(-400);
-    }
-
-    this.basicPlatforms.children.iterate((child) => {
-      const platform: Phaser.Physics.Arcade.Sprite = child;
-      const scrollY = this.cameras.main.scrollY;
-
-      if (platform.y >= scrollY + this.scale.height) {
-        platform.y = scrollY - 100;
-        platform.body.updateFromGameObject();
-      }
-    });
+    // const touchingDown = this.player.body.touching.down;
+    // if (touchingDown) {
+    //   // this.player.setVelocityY(-400);
+    // }
   }
 
-  createBackground() {
+  createBackground(): void {
     const { width, height } = this.scale;
 
-    this.add
+    this.Lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
-      .setScrollFactor(1, 0);
-    this.add
+      .setScrollFactor(0, 0);
+
+    this.Lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
       .setScale(0.4);
-    this.add
+
+    this.Lvl1Bg3 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg3)
       .setScale(0.4);
-    this.add
-      .image(0, 0, TextureKey.Lvl1Bg4)
-      .setOrigin(0)
+
+    this.Lvl1Bg4 = this.add
+      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
       .setDisplaySize(width, height);
-    this.add
+
+    this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
       .setScale(0.4);
   }
 
-  createPlatforms() {
-    this.basicPlatforms = this.physics.add.staticGroup();
-    const platformsCount = 5;
-    const { width } = this.scale;
-
-    for (let i = 0; i < platformsCount; i += 1) {
-      const x = Phaser.Math.Between(width * 0.5, width * 0.5);
-      const y = 200 * i;
-
-      const platform = this.basicPlatforms.create(x, y, TextureKey.BasicPlatform).setScale(0.4);
-
-      const { body } = platform;
-      body.updateFromGameObject();
-    }
+  createPlatforms(): void {
+    this.basicPlatforms = new PlatformGroup(this);
+    this.basicPlatforms.createPlatforms(6);
   }
 
-  createPlayer() {
-    const { width, height } = this.scale;
-
-    this.player = this.physics.add
-      .sprite(width * 0.5, height * 0.5, TextureKey.Player.AlternativeSkin, AnimationKey.Player.AlternativeSkin.Stand)
+  createPlayer(positionX, positionY): void {
+    this.player = Player
+      .generate(
+        this,
+        positionX,
+        positionY,
+        TextureKey.Player.AlternativeSkin,
+        FrameKey.Player.AlternativeSkin.Ready,
+      )
       .setScale(0.4);
-
-    this.player.body.checkCollision.up = false;
-    this.player.body.checkCollision.left = false;
-    this.player.body.checkCollision.right = false;
-
-    this.cameras.main.startFollow(this.player);
   }
 
-  addColliders() {
+  addColliders(): void {
     this.physics.add.collider(this.basicPlatforms, this.player);
   }
 
-  createInfoForDeveloper() {
+  createInfoForDeveloper(): void {
     // display FPS
     this.fpsCounter = new CounterFps(this);
 

@@ -13,22 +13,22 @@ export default class StartScene extends Phaser.Scene {
     super({ key: SceneKeys.Start });
   }
 
-  create() {
+  create(): void {
     console.log('start-scene');
     this.createInfoForDeveloper();
     this.createBackground();
     this.scene.start(SceneKeys.Level1);
   }
 
-  update() {
+  update(): void {
     this.fpsCounter.update();
   }
 
-  createBackground() {
+  createBackground(): void {
     this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, TextureKey.StartMenuBg);
   }
 
-  createInfoForDeveloper() {
+  createInfoForDeveloper(): void {
     // display FPS
     this.fpsCounter = new CounterFps(this);
 

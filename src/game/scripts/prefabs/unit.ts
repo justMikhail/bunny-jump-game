@@ -1,18 +1,52 @@
-export default class Unit extends Phaser.Physics.Arcade.Sprite {
-  velocity: number;
+import { Physics } from 'phaser';
 
-  constructor(data) {
-    super(data.scene, data.x, data.y, data.texture, data.frame);
+export class Unit extends Physics.Arcade.Sprite {
+  protected hp = 100;
+
+  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+    super(scene, x, y, texture, frame);
+
+    scene.add.existing(this);
+    scene.physics.add.existing(this);
+
+    this.getBody().setCollideWorldBounds(true);
   }
 
-  init(data) {
-    this.scene.add.existing(this);
-    this.scene.physics.add.existing(this);
-    this.body.enable = true;
-    this.velocity = data.velocity;
+  public getDamage(value?: number): void {
+    this.scene.tweens.add({
+      targets: this,
+      duration: 100,
+      repeat: 3,
+      yoyo: true,
+      alpha: 0.5,
+      onStart: () => {
+        if (value) {
+          this.hp -= value;
+        }
+      },
+      onComplete: () => {
+        this.setAlpha(1);
+      },
+    });
   }
 
-  setAliveStatus(status: boolean) {
+  public getHPValue(): number {
+    return this.hp;
+  }
+
+  protected checkFlip(): void {
+    if (this.body.velocity.x < 0) {
+      this.scaleX = -1;
+    } else {
+      this.scaleX = 1;
+    }
+  }
+
+  protected getBody(): Physics.Arcade.Body {
+    return this.body as Physics.Arcade.Body;
+  }
+
+  protected setAliveStatus(status: boolean) {
     this.body.enable = status;
     this.setVisible(status);
     this.setActive(status);
