@@ -7,6 +7,8 @@ import { FrameKey } from '../const/frame-key';
 import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
+import PlatformItem from '../prefabs/platform-item';
+import Texture = Phaser.Textures.Texture;
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
@@ -37,11 +39,13 @@ export default class Level1Scene extends Phaser.Scene {
     this.createPlayer(width * 0.5, height * 0.5);
     this.addColliders();
     this.createInfoForDeveloper();
+
+    this.cameras.main.startFollow(this.player);
   }
 
   update(): void {
     this.fpsCounter.update();
-    this.Lvl1Bg4.tilePositionY += -1;
+    this.Lvl1Bg4.tilePositionY += -3;
     this.Lvl1Bg3.tilePositionY += -0.3;
   }
 
@@ -68,7 +72,8 @@ export default class Level1Scene extends Phaser.Scene {
     this.Lvl1Bg4 = this.add
       .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg4)
       .setOrigin(0, 0)
-      .setScale(0.4);
+      .setScale(0.4)
+      .setScrollFactor(0, 0);
 
     this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
@@ -78,7 +83,8 @@ export default class Level1Scene extends Phaser.Scene {
 
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
-    this.basicPlatforms.createPlatforms(6, 0.3);
+    this.basicPlatforms.createFirstPlatform(0.3);
+    this.basicPlatforms.createPlatforms(5, 0.3);
   }
 
   createPlayer(positionX, positionY): void {

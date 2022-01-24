@@ -9,7 +9,7 @@ export class Unit extends Physics.Arcade.Sprite {
     // PHYSICS
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
-    this.getBody().setCollideWorldBounds(true);
+    // this.getBody().setCollideWorldBounds(true);
   }
 
   public getDamage(value?: number): void {

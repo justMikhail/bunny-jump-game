@@ -49,7 +49,7 @@ export default class Player extends Unit {
   }
 
   addMovement(): void {
-    // this.getBody().setVelocity(0);
+    this.getBody().setVelocity(0);
 
     if (this.keyW?.isDown) {
       this.body.velocity.y = -this.basicSpeed;
