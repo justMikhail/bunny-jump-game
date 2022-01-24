@@ -6,7 +6,7 @@ export default class PlatformItem extends Phaser.Physics.Arcade.Sprite {
     this.init();
   }
 
-  init() {
+  init(): void {
     this.scene.add.existing(this);
     // this.scene.physics.add.existing(this);
     // this.body.enable = true;

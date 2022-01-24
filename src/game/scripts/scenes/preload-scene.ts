@@ -12,7 +12,7 @@ export default class PreloadScene extends BootScene {
     super({ key: SceneKeys.Preload });
   }
 
-  preload() {
+  preload(): void {
     // backgrounds
     this.load.image(TextureKey.Lvl1Bg1, '../img/sprites/backgrounds/lvl-1/bg1.png');
     this.load.image(TextureKey.Lvl1Bg2, '../img/sprites/backgrounds/lvl-1/bg2.png');
@@ -20,6 +20,11 @@ export default class PreloadScene extends BootScene {
     this.load.image(TextureKey.Lvl1Bg4, '../img/sprites/backgrounds/lvl-1/bg4.png');
     this.load.image(TextureKey.Lvl1Bg5, '../img/sprites/backgrounds/lvl-1/bg5.png');
     // player
+    this.load.atlas(
+      TextureKey.Player.BasicSkin,
+      '../img/sprites/player/basic-skin/bunny-basic-skin.png',
+      '../img/sprites/player/basic-skin/bunny-basic-skin.json',
+    );
     this.load.atlas(
       TextureKey.Player.AlternativeSkin,
       '../img/sprites/player/alternative-skin/bunny-alternative-skin.png',
@@ -33,14 +38,14 @@ export default class PreloadScene extends BootScene {
     // sounds
   }
 
-  create() {
+  create(): void {
     console.log('preload-scene');
     this.createBackground();
     super.createInfoForDeveloper();
     this.scene.start(SceneKeys.Start);
   }
 
-  createBackground() {
+  createBackground(): void {
     this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, TextureKey.StartMenuBg);
   }
 }

@@ -9,7 +9,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.Group {
     this.scene = scene;
   }
 
-  createPlatforms() {
+  createPlatforms(): void {
     const platformItem = Platform.generate(this.scene, 250, 500, TextureKey.BasicPlatform).setScale(0.4);
     this.add(platformItem);
 
@@ -21,9 +21,6 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.Group {
       const y = 200 * i;
 
       const platform = new Platform(this.scene, x, y, TextureKey.BasicPlatform).setScale(0.4);
-
-      // const { body } = platform;
-      // body.updateFromGameObject();
     }
   }
 }

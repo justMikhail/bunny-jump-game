@@ -10,17 +10,17 @@ import CounterFps from '../prefabs/counter-fps';
 export default class BootScene extends Phaser.Scene {
   fpsCounter;
 
-  preload() {
+  preload(): void {
     this.load.image(TextureKey.StartMenuBg, '../img/sprites/backgrounds/start-menu/bg_lvl-1-sky.png');
   }
 
-  create() {
+  create(): void {
     console.log('boot-scene');
     this.createInfoForDeveloper();
     this.scene.start(SceneKeys.Preload);
   }
 
-  update() {
+  update(): void {
     this.fpsCounter.update();
   }
 

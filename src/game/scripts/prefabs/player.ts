@@ -1,40 +1,53 @@
-import * as Phaser from 'phaser';
+import { Unit } from './unit';
 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
-  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
-    super(scene, x, y, texture, frame);
+export default class Player extends Unit {
+  private keyW: Phaser.Input.Keyboard.Key;
 
-    this.init();
-  }
+  private keyA: Phaser.Input.Keyboard.Key;
 
-  init() {
-    this.scene.add.existing(this);
-    this.scene.physics.add.existing(this);
-    this.body.enable = true;
-    this.body.checkCollision.up = false;
-    this.body.checkCollision.left = false;
-    this.body.checkCollision.right = false;
+  private keyS: Phaser.Input.Keyboard.Key;
+
+  private keyD: Phaser.Input.Keyboard.Key;
+
+  constructor(scene: Phaser.Scene, x: number, y: number, skinTexture: string, frame?: string) {
+    super(scene, x, y, skinTexture, frame);
+
+    // KEYS
+    this.keyW = this.scene.input.keyboard.addKey('W');
+    this.keyA = this.scene.input.keyboard.addKey('A');
+    this.keyS = this.scene.input.keyboard.addKey('S');
+    this.keyD = this.scene.input.keyboard.addKey('D');
+
+    // PHYSICS
+    this.getBody().setSize(100, 100);
+    this.getBody().enable = true;
+    this.getBody().checkCollision.up = false;
+    this.getBody().checkCollision.left = false;
+    this.getBody().checkCollision.right = false;
   }
 
   static generate(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
     return new Player(scene, x, y, texture, frame);
   }
 
-  addMovement(cursors: Phaser.Types.Input.Keyboard.CursorKeys) {
-    const speed = 300;
+  addMovement(): void {
+    const speed = 200;
+    this.getBody().setVelocity(0);
 
-    this.setVelocity(0); // todo
-
-    if (cursors.left.isDown) {
-      this.setVelocityX(-speed);
-    } else if (cursors.right.isDown) {
-      this.setVelocityX(speed);
+    if (this.keyW?.isDown) {
+      this.body.velocity.y = -speed;
     }
 
-    if (cursors.up.isDown) {
-      this.setVelocityY(-speed);
-    } else if (cursors.down.isDown) {
-      this.setVelocityY(speed);
+    if (this.keyA?.isDown) {
+      this.body.velocity.x = -speed;
+    }
+
+    if (this.keyS?.isDown) {
+      this.body.velocity.y = speed;
+    }
+
+    if (this.keyD?.isDown) {
+      this.body.velocity.x = speed;
     }
   }
 }
