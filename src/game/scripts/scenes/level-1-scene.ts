@@ -41,6 +41,8 @@ export default class Level1Scene extends Phaser.Scene {
 
   update(): void {
     this.fpsCounter.update();
+    this.Lvl1Bg4.tilePositionY += -1;
+    this.Lvl1Bg3.tilePositionY += -0.3;
   }
 
   createBackground(): void {
@@ -56,12 +58,17 @@ export default class Level1Scene extends Phaser.Scene {
       .setScale(0.4);
 
     this.Lvl1Bg3 = this.add
-      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg3)
+      .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg3)
       .setScale(0.4);
 
+    // this.Lvl1Bg4 = this.add
+    //   .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
+    //   .setDisplaySize(width, height);
+
     this.Lvl1Bg4 = this.add
-      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
-      .setDisplaySize(width, height);
+      .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg4)
+      .setOrigin(0, 0)
+      .setScale(0.4);
 
     this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)

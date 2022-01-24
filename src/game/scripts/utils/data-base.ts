@@ -3,7 +3,7 @@ export const DataBase = {
   DefaultScreenWidth: window.innerWidth,
   DefaultScreenHeight: window.innerHeight,
   GravityForce: {
-    BasicY: 400,
+    BasicY: 500,
     BasicX: 0,
   },
   player: {

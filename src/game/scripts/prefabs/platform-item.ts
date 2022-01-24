@@ -19,10 +19,10 @@ export default class PlatformItem extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    if (this.active && this.y < this.height) {
-      console.log('platform is out of scene');
-      // this.setAliveStatus(false);
-    }
+    // if (this.active && this.y < this.height) {
+    //   console.log('platform is out of scene');
+    //   // this.setAliveStatus(false);
+    // }
   }
 
   reset() {

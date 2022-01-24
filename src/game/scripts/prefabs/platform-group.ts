@@ -15,7 +15,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
 
     if (!platforms) {
       for (let i = 0; i < platformsCount; i += 1) {
-        const positionX = Phaser.Math.Between(width * 0.5, width * 0.5);
+        const positionX = Phaser.Math.Between(0, width);
         const positionY = 150 * i;
 
         const platformItem = PlatformItem
