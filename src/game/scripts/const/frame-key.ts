@@ -1,10 +1,12 @@
 export const FrameKey = {
   Player: {
     BasicSkin: {
-      Stand: 'bunny1_stand',
+      Ready: 'bunny_1_ready',
+      Jump: 'bunny_jump',
     },
     AlternativeSkin: {
-      Stand: 'bunny2_stand',
+      Ready: 'bunny_2_ready',
+      Jump: 'bunny_jump',
     },
   },
 } as const;

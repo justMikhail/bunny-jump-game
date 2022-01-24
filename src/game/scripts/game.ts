@@ -19,9 +19,9 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
     backgroundColor: GameColor.MainBackgroundColor,
     parent: gameContainer,
     scale: {
-      // mode: Phaser.Scale.FIT,
-      // autoCenter: Phaser.Scale.CENTER_BOTH,
-      mode: Phaser.Scale.NONE,
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      // mode: Phaser.Scale.NONE,
       zoom: 1,
     },
     physics: {

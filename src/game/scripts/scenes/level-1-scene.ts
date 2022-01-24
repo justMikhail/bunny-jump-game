@@ -1,10 +1,10 @@
 import * as Phaser from 'phaser';
-
+// const
 import { SceneKeys } from '../const/scene-keys';
 import { TextureKey } from '../const/texture-key';
-import CounterFps from '../prefabs/counter-fps';
 import { FrameKey } from '../const/frame-key';
-
+// classes
+import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
 
@@ -67,10 +67,8 @@ export default class Level1Scene extends Phaser.Scene {
       .setScale(0.4);
 
     this.Lvl1Bg4 = this.add
-      .tileSprite(0, 0, width, height, TextureKey.Lvl1Bg4)
-      .setOrigin(0);
-
-    this.Lvl1Bg4.width = width;
+      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
+      .setDisplaySize(width, height);
 
     this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
@@ -80,17 +78,19 @@ export default class Level1Scene extends Phaser.Scene {
 
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
-    this.basicPlatforms.createPlatforms();
+    this.basicPlatforms.createPlatforms(6);
   }
 
   createPlayer(positionX, positionY): void {
-    this.player = Player.generate(
-      this,
-      positionX,
-      positionY,
-      TextureKey.Player.AlternativeSkin,
-      FrameKey.Player.AlternativeSkin.Stand,
-    ).setScale(0.4);
+    this.player = Player
+      .generate(
+        this,
+        positionX,
+        positionY,
+        TextureKey.Player.AlternativeSkin,
+        FrameKey.Player.AlternativeSkin.Ready,
+      )
+      .setScale(0.4);
   }
 
   addColliders(): void {

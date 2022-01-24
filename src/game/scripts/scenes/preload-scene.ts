@@ -1,13 +1,13 @@
+import * as Phaser from 'phaser';
 import { SceneKeys } from '../const/scene-keys';
 
 // scenes
-import BootScene from './boot-scene';
 import { TextureKey } from '../const/texture-key';
 import { DataBase } from '../utils/data-base';
 
 // objects
 
-export default class PreloadScene extends BootScene {
+export default class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: SceneKeys.Preload });
   }
@@ -41,7 +41,6 @@ export default class PreloadScene extends BootScene {
   create(): void {
     console.log('preload-scene');
     this.createBackground();
-    super.createInfoForDeveloper();
     this.scene.start(SceneKeys.Start);
   }
 

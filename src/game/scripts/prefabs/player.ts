@@ -1,4 +1,6 @@
 import { Unit } from './unit';
+import { FrameKey } from '../const/frame-key';
+import { TextureKey } from '../const/texture-key';
 
 export default class Player extends Unit {
   private keyW: Phaser.Input.Keyboard.Key;
@@ -24,6 +26,9 @@ export default class Player extends Unit {
     this.getBody().checkCollision.up = false;
     this.getBody().checkCollision.left = false;
     this.getBody().checkCollision.right = false;
+
+    // ANIMS
+    this.initAnimations();
   }
 
   static generate(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
@@ -49,5 +54,19 @@ export default class Player extends Unit {
     if (this.keyD?.isDown) {
       this.body.velocity.x = speed;
     }
+  }
+
+  private initAnimations(): void {
+    const generatedWalkFrames = this.scene.anims.generateFrameNames(TextureKey.Player.AlternativeSkin, {
+      prefix: 'bunny_2_walk_',
+      start: 1,
+      end: 2,
+    });
+
+    this.scene.anims.create({
+      key: FrameKey.Player.AlternativeSkin.Jump,
+      frames: generatedWalkFrames,
+      frameRate: 8,
+    });
   }
 }

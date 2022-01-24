@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "bunny2_hurt",
+	"filename": "bunny_1_hurt",
 	"frame": {"x":125,"y":212,"w":150,"h":174},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":150,"h":174}
 },
 {
-	"filename": "bunny2_jump",
+	"filename": "bunny_1_jump",
 	"frame": {"x":2,"y":2,"w":150,"h":181},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":150,"h":181}
 },
 {
-	"filename": "bunny2_ready",
+	"filename": "bunny_1_ready",
 	"frame": {"x":278,"y":206,"w":120,"h":191},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":120,"h":191}
 },
 {
-	"filename": "bunny2_stand",
+	"filename": "bunny_1_stand",
 	"frame": {"x":2,"y":186,"w":120,"h":201},
 	"rotated": false,
 	"trimmed": false,
@@ -33,7 +33,7 @@
 	"sourceSize": {"w":120,"h":201}
 },
 {
-	"filename": "bunny2_walk1",
+	"filename": "bunny_1_walk1",
 	"frame": {"x":278,"y":2,"w":120,"h":201},
 	"rotated": false,
 	"trimmed": false,
@@ -41,7 +41,7 @@
 	"sourceSize": {"w":120,"h":201}
 },
 {
-	"filename": "bunny2_walk2",
+	"filename": "bunny_1_walk2",
 	"frame": {"x":155,"y":2,"w":120,"h":207},
 	"rotated": false,
 	"trimmed": false,
