@@ -38,7 +38,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
   }
 
   update() {
-    this.children.iterate((child) => {
+    this.children.iterate((child: Phaser.Physics.Arcade.Sprite) => {
       const platform = child;
 
       const { scrollY } = this.scene.cameras.main;
