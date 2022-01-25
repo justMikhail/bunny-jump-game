@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parserOptions: {
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
     ecmaVersion: 13,
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
@@ -32,11 +32,11 @@ module.exports = {
     'lines-between-class-members': [
       'error',
       'always',
-      { 'exceptAfterSingleLine': true },
+      { exceptAfterSingleLine: true },
     ],
-    "import/prefer-default-export": "off",
+    'import/prefer-default-export': 'off',
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
-    'max-len': ["error", { "code": 120 }]
+    'max-len': ['error', { code: 120 }],
   },
 };
