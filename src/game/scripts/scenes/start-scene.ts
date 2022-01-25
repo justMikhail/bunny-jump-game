@@ -7,10 +7,11 @@ import { DataBase } from '../utils/data-base';
 import { TextureKey } from '../const/texture-key';
 
 export default class StartScene extends Phaser.Scene {
-  fpsCounter;
+  fpsCounter: Phaser.GameObjects.Text;
 
   constructor() {
     super({ key: SceneKeys.Start });
+    this.fpsCounter = new CounterFps(this);
   }
 
   create(): void {
