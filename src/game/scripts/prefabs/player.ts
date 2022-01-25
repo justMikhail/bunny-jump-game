@@ -4,13 +4,9 @@ import { TextureKey } from '../const/texture-key';
 
 export default class Player extends Unit {
   private keyW: Phaser.Input.Keyboard.Key;
-
   private keyA: Phaser.Input.Keyboard.Key;
-
   private keyS: Phaser.Input.Keyboard.Key;
-
   private keyD: Phaser.Input.Keyboard.Key;
-
   private basicSpeed: number;
 
   constructor(scene: Phaser.Scene, x: number, y: number, skinTexture: string, frame?: string) {

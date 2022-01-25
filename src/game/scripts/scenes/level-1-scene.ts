@@ -7,24 +7,15 @@ import { FrameKey } from '../const/frame-key';
 import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
-import PlatformItem from '../prefabs/platform-item';
-import Texture = Phaser.Textures.Texture;
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
-
   player;
-
   basicPlatforms: PlatformGroup;
-
   Lvl1Bg1;
-
   Lvl1Bg2;
-
   Lvl1Bg3;
-
   Lvl1Bg4;
-
   Lvl1Bg5;
 
   constructor() {
