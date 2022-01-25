@@ -1,12 +1,14 @@
 import * as Phaser from 'phaser';
-// const
+// ------const-----
 import { SceneKeys } from '../const/scene-keys';
 import { TextureKey } from '../const/texture-key';
 import { FrameKey } from '../const/frame-key';
-// classes
+// ------classes-----
 import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
+import PlatformItem from '../prefabs/platform-item';
+import Texture = Phaser.Textures.Texture;
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
@@ -37,17 +39,14 @@ export default class Level1Scene extends Phaser.Scene {
     this.createPlayer(width * 0.5, height * 0.5);
     this.addColliders();
     this.createInfoForDeveloper();
+
+    this.cameras.main.startFollow(this.player);
   }
 
   update(): void {
     this.fpsCounter.update();
-    this.player.addMovement();
-    // this.player.addMovement(this.cursors);
-
-    // const touchingDown = this.player.body.touching.down;
-    // if (touchingDown) {
-    //   // this.player.setVelocityY(-400);
-    // }
+    this.Lvl1Bg4.tilePositionY += -3;
+    this.Lvl1Bg3.tilePositionY += -0.3;
   }
 
   createBackground(): void {
@@ -63,12 +62,18 @@ export default class Level1Scene extends Phaser.Scene {
       .setScale(0.4);
 
     this.Lvl1Bg3 = this.add
-      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg3)
+      .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg3)
       .setScale(0.4);
 
+    // this.Lvl1Bg4 = this.add
+    //   .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
+    //   .setDisplaySize(width, height);
+
     this.Lvl1Bg4 = this.add
-      .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
-      .setDisplaySize(width, height);
+      .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg4)
+      .setOrigin(0, 0)
+      .setScale(0.4)
+      .setScrollFactor(0, 0);
 
     this.Lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
@@ -78,7 +83,8 @@ export default class Level1Scene extends Phaser.Scene {
 
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
-    this.basicPlatforms.createPlatforms(6);
+    this.basicPlatforms.createFirstPlatform(0.3);
+    this.basicPlatforms.createPlatforms(5, 0.3);
   }
 
   createPlayer(positionX, positionY): void {

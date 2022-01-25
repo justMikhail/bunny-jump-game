@@ -11,8 +11,13 @@ export default class Player extends Unit {
 
   private keyD: Phaser.Input.Keyboard.Key;
 
+  private basicSpeed: number;
+
   constructor(scene: Phaser.Scene, x: number, y: number, skinTexture: string, frame?: string) {
     super(scene, x, y, skinTexture, frame);
+
+    this.scene.events.on('update', this.update, this);
+    this.basicSpeed = 300;
 
     // KEYS
     this.keyW = this.scene.input.keyboard.addKey('W');
@@ -21,7 +26,7 @@ export default class Player extends Unit {
     this.keyD = this.scene.input.keyboard.addKey('D');
 
     // PHYSICS
-    this.getBody().setSize(100, 100);
+    this.getBody().setSize(this.width, this.height);
     this.getBody().enable = true;
     this.getBody().checkCollision.up = false;
     this.getBody().checkCollision.left = false;
@@ -35,24 +40,31 @@ export default class Player extends Unit {
     return new Player(scene, x, y, texture, frame);
   }
 
+  update() {
+    this.addMovement();
+    const touchingDown = this.getBody().touching.down;
+    if (touchingDown) {
+      this.getBody().setVelocityY(-this.basicSpeed);
+    }
+  }
+
   addMovement(): void {
-    const speed = 200;
     this.getBody().setVelocity(0);
 
     if (this.keyW?.isDown) {
-      this.body.velocity.y = -speed;
+      this.body.velocity.y = -this.basicSpeed;
     }
 
     if (this.keyA?.isDown) {
-      this.body.velocity.x = -speed;
+      this.body.velocity.x = -this.basicSpeed;
     }
 
     if (this.keyS?.isDown) {
-      this.body.velocity.y = speed;
+      this.body.velocity.y = this.basicSpeed;
     }
 
     if (this.keyD?.isDown) {
-      this.body.velocity.x = speed;
+      this.body.velocity.x = this.basicSpeed;
     }
   }
 

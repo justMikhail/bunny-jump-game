@@ -1,25 +1,51 @@
 import * as Phaser from 'phaser';
-import Platform from './platform-item';
 import { TextureKey } from '../const/texture-key';
+import PlatformItem from './platform-item';
 
-export default class PlatformGroup extends Phaser.Physics.Arcade.Group {
+export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
   constructor(scene: Phaser.Scene) {
     super(scene.physics.world, scene);
     this.scene = scene;
+
+    this.scene.events.on('update', this.update, this);
   }
 
-  createPlatforms(platformsCount): void {
+  createFirstPlatform(scaleNumber) {
+    PlatformItem
+      .generate(this.scene, this.scene.scale.width * 0.5, (this.scene.scale.height - 150), TextureKey.BrokenPlatform)
+      .setScale(scaleNumber);
+  }
+
+  createPlatforms(platformsCount, scaleNumber): void {
     const { width } = this.scene.scale;
 
-    for (let i = 0; i < platformsCount; i += 1) {
-      const positionX = Phaser.Math.Between(width * 0.5, width * 0.5);
-      const positionY = 150 * i;
+    const platforms = this.getFirstDead();
 
-      const platformItem = Platform
-        .generate(this.scene, positionX, positionY, TextureKey.BasicPlatform)
-        .setScale(0.4);
+    if (!platforms) {
+      for (let i = 0; i < platformsCount; i += 1) {
+        const positionX = Phaser.Math.Between(0, width);
+        const positionY = 150 * i;
 
-      this.add(platformItem);
+        const platformItem = PlatformItem
+          .generate(this.scene, positionX, positionY, TextureKey.BasicPlatform)
+          .setScale(scaleNumber);
+
+        this.add(platformItem);
+      }
+    } else {
+      console.log('reset platforms');
     }
+  }
+
+  update() {
+    this.children.iterate((child) => {
+      const platform = child;
+
+      const { scrollY } = this.scene.cameras.main;
+
+      if (platform.y >= scrollY + this.scene.scale.height) {
+        platform.y = scrollY - Phaser.Math.Between(150, 150);
+      }
+    });
   }
 }
