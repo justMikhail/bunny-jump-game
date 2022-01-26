@@ -52,25 +52,21 @@ export default class Player extends Unit {
     }
 
     if (this.keyA?.isDown && !touchingDown) {
-      this.body.velocity.x = -this.basicSpeed;
+      this.getBody().velocity.x = -this.basicSpeed;
     } else if (this.keyD?.isDown && !touchingDown) {
-      this.body.velocity.x = this.basicSpeed;
+      this.getBody().velocity.x = this.basicSpeed;
     }
 
-    const gyroscopePlayerMovement = (plyr) => {
-      if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', (event) => {
-          if (event.gamma < -3) {
-            plyr.setVelocityX(event.gamma * 0.4);
-          }
-          if (event.gamma > 3) {
-            plyr.setVelocityX(event.gamma * 0.4);
-          }
-        }, true);
-      }
-    };
-
-    gyroscopePlayerMovement(this);
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (event) => {
+        if (event.gamma < -3) {
+          this.getBody().setVelocityX(event.gamma * 0.4);
+        }
+        if (event.gamma > 3) {
+          this.getBody().setVelocityX(event.gamma * 0.4);
+        }
+      }, true);
+    }
   }
 
   private initAnimations(): void {
