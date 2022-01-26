@@ -14,6 +14,7 @@ export default class Level1Scene extends Phaser.Scene {
   player;
   basicPlatforms: PlatformGroup;
   spring;
+  springsGroup;
   Lvl1Bg1;
   Lvl1Bg2;
   Lvl1Bg3;
@@ -84,7 +85,11 @@ export default class Level1Scene extends Phaser.Scene {
   }
 
   createExtraItems(): void {
-    this.springs = this.
+    this.springsGroup = this.physics.add.group({
+      classType: SpringItem,
+    });
+
+    this.springsGroup.get(240, 400, TextureKey.ExtraItem.Spring);
   }
 
   createPlayer(positionX, positionY): void {
