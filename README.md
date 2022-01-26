@@ -30,6 +30,11 @@ $ npm run prod
 $ npm run build
 ```
 
-## Info
-##Bundler Doc:
-https://laravel-mix.com/docs/6.0/installation
+## Useful Links
+
+- [Phaser Website](https://phaser.io/)
+- [Phaser 3 Forum](https://phaser.discourse.group/)
+- [Phaser 3 API Docs](https://photonstorm.github.io/phaser3-docs/)
+- [Texture Packer](https://www.codeandweb.com/texturepacker/)
+- [Tile Map Editor](https://www.mapeditor.org/)
+- [Greate Free Assets By Kenny](https://kenney.nl/assets)

@@ -1,9 +1,9 @@
 import * as Phaser from 'phaser';
 import { SceneKeys } from '../const/scene-keys';
-// ------scenes------
+// ------------ scenes ------------
 import { TextureKey } from '../const/texture-key';
 import { DataBase } from '../utils/data-base';
-// ------objects------
+// ------------ objects ------------
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {

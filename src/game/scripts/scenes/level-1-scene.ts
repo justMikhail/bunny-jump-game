@@ -15,11 +15,11 @@ export default class Level1Scene extends Phaser.Scene {
   basicPlatforms: PlatformGroup;
   spring;
   springGroup;
-  Lvl1Bg1;
-  Lvl1Bg2;
-  Lvl1Bg3;
-  Lvl1Bg4;
-  Lvl1Bg5;
+  lvl1Bg1;
+  lvl1Bg2;
+  lvl1Bg3;
+  lvl1Bg4;
+  lvl1Bg5;
 
   constructor() {
     super({ key: SceneKeys.Level1 });
@@ -43,39 +43,41 @@ export default class Level1Scene extends Phaser.Scene {
   update(): void {
     this.fpsCounter.update();
     this.setHorizontalWrapForSprite(this.player);
-    // this.Lvl1Bg4.tilePositionY += -3;
-    // this.Lvl1Bg3.tilePositionY += -0.3;
+    this.addParallaxEffectForBackground();
   }
 
   createBackground(): void {
     const { width, height } = this.scale;
 
-    this.Lvl1Bg1 = this.add
+    this.lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
       .setScrollFactor(0);
 
-    this.Lvl1Bg2 = this.add
+    this.lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
       .setScale(0.4)
       .setScrollFactor(0);
 
-    this.Lvl1Bg3 = this.add
-      .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg3)
-      .setOrigin(0, 0)
+    this.lvl1Bg3 = this.add
+      .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg3)
       .setScale(0.4)
       .setScrollFactor(0, 0);
 
-    this.Lvl1Bg4 = this.add
-      .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg4)
-      .setOrigin(0, 0)
+    this.lvl1Bg4 = this.add
+      .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg4)
       .setScale(0.4)
       .setScrollFactor(0, 0);
 
-    this.Lvl1Bg5 = this.add
+    this.lvl1Bg5 = this.add
       .image(width * 0.5, height, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
       .setScale(0.4);
+  }
+
+  addParallaxEffectForBackground() {
+    this.lvl1Bg3.tilePositionY = this.cameras.main.scrollY * 0.3;
+    this.lvl1Bg4.tilePositionY = this.cameras.main.scrollY * 0.7;
   }
 
   createPlatforms(): void {
