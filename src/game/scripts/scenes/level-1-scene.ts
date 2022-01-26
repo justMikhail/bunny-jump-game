@@ -14,7 +14,7 @@ export default class Level1Scene extends Phaser.Scene {
   player;
   basicPlatforms: PlatformGroup;
   spring;
-  springsGroup;
+  springGroup;
   Lvl1Bg1;
   Lvl1Bg2;
   Lvl1Bg3;
@@ -45,6 +45,9 @@ export default class Level1Scene extends Phaser.Scene {
     this.setHorizontalWrapForSprite(this.player);
     // this.Lvl1Bg4.tilePositionY += -3;
     // this.Lvl1Bg3.tilePositionY += -0.3;
+
+    /* Device Orientation */
+    window.addEventListener('deviceorientation', this.handleOrientation, true);
   }
 
   createBackground(): void {
@@ -85,11 +88,11 @@ export default class Level1Scene extends Phaser.Scene {
   }
 
   createExtraItems(): void {
-    this.springsGroup = this.physics.add.group({
+    this.springGroup = this.physics.add.group({
       classType: SpringItem,
     });
 
-    this.springsGroup.get(240, 400, TextureKey.ExtraItem.Spring);
+    this.springGroup.get(240, 400, TextureKey.ExtraItem.Spring).setScale(0.3);
   }
 
   createPlayer(positionX, positionY): void {
@@ -106,6 +109,7 @@ export default class Level1Scene extends Phaser.Scene {
 
   addColliders(): void {
     this.physics.add.collider(this.basicPlatforms, this.player);
+    this.physics.add.collider(this.basicPlatforms, this.springGroup);
   }
 
   setHorizontalWrapForSprite(sprite: Phaser.GameObjects.Sprite) {
@@ -134,5 +138,20 @@ export default class Level1Scene extends Phaser.Scene {
       })
       .setOrigin(1, 0)
       .setScrollFactor(0);
+  }
+
+  handleOrientation(evt) {
+    const dx = evt.gamma;
+    const edx = (dx / 3.5) ** 4;
+    console.log(dx, edx);
+    if (dx < 0) {
+      this.player.body.velocity.x = -edx;
+    } else {
+      this.player.body.velocity.x = edx;
+    }
+    // player.body.velocity.x = 0;
+    if (this.player.body.velocity.x > 400) {
+      this.player.body.velocity.x = 400;
+    } else if (this.player.body.velocity.x < -400) this.player.body.velocity.x = -400;
   }
 }
