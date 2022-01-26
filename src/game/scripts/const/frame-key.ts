@@ -11,9 +11,9 @@ export const FrameKey = {
   },
   ExtraItem: {
     Spring: {
-      Default: 'spring',
-      In: 'spring-in',
-      Out: 'spring-out',
+      Default: 'spring_default',
+      In: 'spring_in',
+      Out: 'spring_out',
     },
   },
 } as const;

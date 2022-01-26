@@ -11,13 +11,13 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // -----backgrounds------
+    // ---------- backgrounds -----------
     this.load.image(TextureKey.Lvl1Bg1, '../img/sprites/backgrounds/lvl-1/bg1.png');
     this.load.image(TextureKey.Lvl1Bg2, '../img/sprites/backgrounds/lvl-1/bg2.png');
     this.load.image(TextureKey.Lvl1Bg3, '../img/sprites/backgrounds/lvl-1/bg3.png');
     this.load.image(TextureKey.Lvl1Bg4, '../img/sprites/backgrounds/lvl-1/bg4.png');
     this.load.image(TextureKey.Lvl1Bg5, '../img/sprites/backgrounds/lvl-1/bg5.png');
-    // ------player------
+    // ----------- player -----------
     this.load.atlas(
       TextureKey.Player.BasicSkin,
       '../img/sprites/player/basic-skin/bunny-basic-skin.png',
@@ -28,10 +28,10 @@ export default class PreloadScene extends Phaser.Scene {
       '../img/sprites/player/alternative-skin/bunny-alternative-skin.png',
       '../img/sprites/player/alternative-skin/bunny-alternative-skin.json',
     );
-    // ------platforms------
+    // ----------- platforms -----------
     this.load.image(TextureKey.BasicPlatform, '../img/sprites/platforms/ground_stone.png');
     this.load.image(TextureKey.BrokenPlatform, '../img/sprites/platforms/ground_stone_broken.png');
-    // ------items------
+    // ----------- items -----------
     this.load.atlas(
       TextureKey.ExtraItem.Spring,
       '../img/sprites/objects/spring/a-spring.png',
@@ -46,7 +46,7 @@ export default class PreloadScene extends Phaser.Scene {
       '../img/sprites/objects/chip/a-gold-chip.png',
       '../img/sprites/objects/chip/a-gold-chip.json',
     );
-    // ------sounds------
+    // ----------- sounds -----------
   }
 
   create(): void {

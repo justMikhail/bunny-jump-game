@@ -6,7 +6,6 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
   constructor(scene: Phaser.Scene) {
     super(scene.physics.world, scene);
     this.scene = scene;
-
     this.scene.events.on('update', this.update, this);
   }
 

@@ -29,6 +29,7 @@ export default class Level1Scene extends Phaser.Scene {
     console.log('level-1-scene');
     this.createBackground();
     this.createPlatforms();
+    this.createExtraItems();
     this.createPlayer(width * 0.5, height * 0.5);
     this.addColliders();
     this.createInfoForDeveloper();
@@ -82,15 +83,8 @@ export default class Level1Scene extends Phaser.Scene {
     this.basicPlatforms.createPlatforms(7, 0.3);
   }
 
-  createItems(positionX, positionY): void {
-    this.spring = SpringItem
-      .generate(
-        this,
-        positionX,
-        positionY,
-        TextureKey.ExtraItem.Spring,
-        FrameKey.Player.AlternativeSkin.Ready,
-      );
+  createExtraItems(): void {
+    this.springs = this.
   }
 
   createPlayer(positionX, positionY): void {
