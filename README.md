@@ -4,6 +4,8 @@
 
 ## Preview
 
+You can check deployed demo [Play Game!](https://bunny-jump-game.vercel.app/)
+
 <a href="#">
 <img src="readme/screenshot.png" width="640" style='border: 0.20em solid #e1e4e8;border-radius: 15px;'/>
 </a>
