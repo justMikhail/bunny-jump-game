@@ -13,7 +13,7 @@ export default class Player extends Unit {
     super(scene, x, y, skinTexture, frame);
 
     this.scene.events.on('update', this.update, this);
-    this.basicSpeed = 300;
+    this.basicSpeed = 350;
 
     // KEYS
     this.keyW = this.scene.input.keyboard.addKey('W');
@@ -38,28 +38,22 @@ export default class Player extends Unit {
 
   update() {
     this.addMovement();
-    const touchingDown = this.getBody().touching.down;
-    if (touchingDown) {
-      this.getBody().setVelocityY(-this.basicSpeed);
-    }
   }
 
   addMovement(): void {
-    this.getBody().setVelocity(0);
+    const touchingDown = this.getBody().touching.down;
 
-    if (this.keyW?.isDown) {
+    if (touchingDown) {
+      this.getBody().setVelocityY(-this.basicSpeed);
+    }
+
+    if (this.keyW?.isDown && !touchingDown) {
       this.body.velocity.y = -this.basicSpeed;
     }
 
-    if (this.keyA?.isDown) {
+    if (this.keyA?.isDown && !touchingDown) {
       this.body.velocity.x = -this.basicSpeed;
-    }
-
-    if (this.keyS?.isDown) {
-      this.body.velocity.y = this.basicSpeed;
-    }
-
-    if (this.keyD?.isDown) {
+    } else if (this.keyD?.isDown && !touchingDown) {
       this.body.velocity.x = this.basicSpeed;
     }
   }

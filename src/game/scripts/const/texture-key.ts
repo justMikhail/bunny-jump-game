@@ -4,6 +4,13 @@ export const TextureKey = {
     AlternativeSkin: 'player-alternative-skin',
   },
 
+  ExtraItem: {
+    Spring: 'spring',
+    Carrot: 'carrot',
+    Jetpack: 'jetpack',
+    Chip: 'chip',
+  },
+
   StartMenuBg: 'start-menu-bg',
 
   Lvl1Bg1: 'lvl-1-bg-1',

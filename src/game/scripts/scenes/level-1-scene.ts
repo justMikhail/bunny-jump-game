@@ -7,11 +7,13 @@ import { FrameKey } from '../const/frame-key';
 import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
+import SpringItem from '../prefabs/spring-item';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
   player;
   basicPlatforms: PlatformGroup;
+  spring;
   Lvl1Bg1;
   Lvl1Bg2;
   Lvl1Bg3;
@@ -31,13 +33,16 @@ export default class Level1Scene extends Phaser.Scene {
     this.addColliders();
     this.createInfoForDeveloper();
 
+    // camera
+    this.cameras.main.setDeadzone(this.scale.width * 1.5);
     this.cameras.main.startFollow(this.player);
   }
 
   update(): void {
     this.fpsCounter.update();
-    this.Lvl1Bg4.tilePositionY += -3;
-    this.Lvl1Bg3.tilePositionY += -0.3;
+    this.setHorizontalWrapForSprite(this.player);
+    // this.Lvl1Bg4.tilePositionY += -3;
+    // this.Lvl1Bg3.tilePositionY += -0.3;
   }
 
   createBackground(): void {
@@ -46,19 +51,18 @@ export default class Level1Scene extends Phaser.Scene {
     this.Lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
-      .setScrollFactor(0, 0);
+      .setScrollFactor(0);
 
     this.Lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
-      .setScale(0.4);
+      .setScale(0.4)
+      .setScrollFactor(0);
 
     this.Lvl1Bg3 = this.add
-      .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg3)
-      .setScale(0.4);
-
-    // this.Lvl1Bg4 = this.add
-    //   .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg4)
-    //   .setDisplaySize(width, height);
+      .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg3)
+      .setOrigin(0, 0)
+      .setScale(0.4)
+      .setScrollFactor(0, 0);
 
     this.Lvl1Bg4 = this.add
       .tileSprite(0, 0, 0, 0, TextureKey.Lvl1Bg4)
@@ -75,7 +79,18 @@ export default class Level1Scene extends Phaser.Scene {
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
     this.basicPlatforms.createFirstPlatform(0.3);
-    this.basicPlatforms.createPlatforms(5, 0.3);
+    this.basicPlatforms.createPlatforms(7, 0.3);
+  }
+
+  createItems(positionX, positionY): void {
+    this.spring = SpringItem
+      .generate(
+        this,
+        positionX,
+        positionY,
+        TextureKey.ExtraItem.Spring,
+        FrameKey.Player.AlternativeSkin.Ready,
+      );
   }
 
   createPlayer(positionX, positionY): void {
@@ -94,9 +109,23 @@ export default class Level1Scene extends Phaser.Scene {
     this.physics.add.collider(this.basicPlatforms, this.player);
   }
 
+  setHorizontalWrapForSprite(sprite: Phaser.GameObjects.Sprite) {
+    const halfSpriteWidth = sprite.displayWidth * 0.5;
+    const sceneWidth = this.scale.width;
+
+    if (sprite.x < -halfSpriteWidth) {
+      // eslint-disable-next-line no-param-reassign
+      sprite.x = sceneWidth + halfSpriteWidth;
+    } else if (sprite.x > sceneWidth + halfSpriteWidth) {
+      // eslint-disable-next-line no-param-reassign
+      sprite.x = -halfSpriteWidth;
+    }
+  }
+
   createInfoForDeveloper(): void {
     // display FPS
     this.fpsCounter = new CounterFps(this);
+    this.fpsCounter.setScrollFactor(0);
 
     // display the Phaser.VERSION
     this.add
@@ -104,6 +133,7 @@ export default class Level1Scene extends Phaser.Scene {
         color: '#000000',
         fontSize: '24px',
       })
-      .setOrigin(1, 0);
+      .setOrigin(1, 0)
+      .setScrollFactor(0);
   }
 }

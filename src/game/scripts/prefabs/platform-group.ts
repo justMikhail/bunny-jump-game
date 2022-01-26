@@ -11,29 +11,25 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
   }
 
   createFirstPlatform(scaleNumber) {
-    PlatformItem
-      .generate(this.scene, this.scene.scale.width * 0.5, (this.scene.scale.height - 150), TextureKey.BrokenPlatform)
+    const firstPlatform = PlatformItem
+      .generate(this.scene, this.scene.scale.width * 0.5, (this.scene.scale.height - 120), TextureKey.BrokenPlatform)
       .setScale(scaleNumber);
+
+    this.add(firstPlatform);
   }
 
   createPlatforms(platformsCount, scaleNumber): void {
     const { width } = this.scene.scale;
 
-    const platforms = this.getFirstDead();
+    for (let i = 0; i < platformsCount; i += 1) {
+      const positionX = Phaser.Math.Between(0, width);
+      const positionY = 100 * i;
 
-    if (!platforms) {
-      for (let i = 0; i < platformsCount; i += 1) {
-        const positionX = Phaser.Math.Between(0, width);
-        const positionY = 150 * i;
+      const platformItem = PlatformItem
+        .generate(this.scene, positionX, positionY, TextureKey.BasicPlatform)
+        .setScale(scaleNumber);
 
-        const platformItem = PlatformItem
-          .generate(this.scene, positionX, positionY, TextureKey.BasicPlatform)
-          .setScale(scaleNumber);
-
-        this.add(platformItem);
-      }
-    } else {
-      console.log('reset platforms');
+      this.add(platformItem);
     }
   }
 
@@ -44,8 +40,10 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
       const { scrollY } = this.scene.cameras.main;
 
       if (platform.y >= scrollY + this.scene.scale.height) {
-        platform.y = scrollY - Phaser.Math.Between(150, 150);
+        platform.y = scrollY - 150;
       }
+
+      platform.body.updateFromGameObject();
     });
   }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx mix watch",
     "prod": "npx mix --production",
-    "build": "npx mix"
+    "build": "npx mix",
+    "eslint": "eslint --ext .ts,.tsx"
   },
   "repository": {
     "type": "git",
@@ -45,9 +46,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.1.3",
-    "mobx": "^6.3.12",
     "phaser": "^3.55.2",
-    "phaser3-rex-plugins": "^1.1.65",
     "swiper": "^7.4.1"
   }
 }

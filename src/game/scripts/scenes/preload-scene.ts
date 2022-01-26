@@ -31,8 +31,21 @@ export default class PreloadScene extends Phaser.Scene {
     // ------platforms------
     this.load.image(TextureKey.BasicPlatform, '../img/sprites/platforms/ground_stone.png');
     this.load.image(TextureKey.BrokenPlatform, '../img/sprites/platforms/ground_stone_broken.png');
-    // items
-
+    // ------items------
+    this.load.atlas(
+      TextureKey.ExtraItem.Spring,
+      '../img/sprites/objects/spring/a-spring.png',
+      '../img/sprites/objects/spring/a-spring.json',
+    );
+    this.load.image(
+      TextureKey.BasicPlatform,
+      '../img/sprites/objects/carrot/carrot.png',
+    );
+    this.load.atlas(
+      TextureKey.ExtraItem.Chip,
+      '../img/sprites/objects/chip/a-gold-chip.png',
+      '../img/sprites/objects/chip/a-gold-chip.json',
+    );
     // ------sounds------
   }
 

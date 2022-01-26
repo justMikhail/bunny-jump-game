@@ -9,4 +9,11 @@ export const FrameKey = {
       Jump: 'bunny_jump',
     },
   },
+  ExtraItem: {
+    Spring: {
+      Default: 'spring',
+      In: 'spring-in',
+      Out: 'spring-out',
+    },
+  },
 } as const;
