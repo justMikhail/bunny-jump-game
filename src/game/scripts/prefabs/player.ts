@@ -60,10 +60,16 @@ export default class Player extends Unit {
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', (event) => {
         if (event.gamma < -3) {
-          this.getBody().setVelocityX(event.gamma * 0.4);
+          this.getBody().setVelocityX(this.basicSpeed);
         }
         if (event.gamma > 3) {
-          this.getBody().setVelocityX(event.gamma * 0.4);
+          this.getBody().setVelocityX(this.basicSpeed);
+        }
+        if (event.alpha < -3) {
+          this.getBody().setVelocityX(this.basicSpeed);
+        }
+        if (event.alpha > 3) {
+          this.getBody().setVelocityX(this.basicSpeed);
         }
       }, true);
     }
