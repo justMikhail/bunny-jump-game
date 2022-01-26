@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx mix watch",
     "prod": "npx mix --production",
-    "build": "npx mix",
+    "build": "npx mix --output public",
     "eslint": "eslint --ext .ts,.tsx"
   },
   "repository": {
