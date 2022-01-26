@@ -46,6 +46,12 @@ export default class Player extends Unit {
     const touchingDown = this.getBody().touching.down;
     if (touchingDown) {
       this.getBody().setVelocityY(-this.basicSpeed * 1.5);
+      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.AlternativeSkin.Jump);
+    }
+
+    const vy = this.getBody().velocity.y;
+    if (vy > 0) {
+      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.AlternativeSkin.Ready);
     }
 
     if (this.keyW?.isDown && !touchingDown) {
