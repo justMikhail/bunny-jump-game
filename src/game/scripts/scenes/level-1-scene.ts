@@ -52,27 +52,32 @@ export default class Level1Scene extends Phaser.Scene {
     this.lvl1Bg1 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg1)
       .setScale(0.4)
-      .setScrollFactor(0);
+      .setScrollFactor(0)
+      .setDisplaySize(width, height);
 
     this.lvl1Bg2 = this.add
       .image(width * 0.5, height * 0.5, TextureKey.Lvl1Bg2)
       .setScale(0.4)
-      .setScrollFactor(0);
+      .setScrollFactor(0)
+      .setDisplaySize(width, height);
 
     this.lvl1Bg3 = this.add
       .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg3)
       .setScale(0.4)
-      .setScrollFactor(0, 0);
+      .setScrollFactor(0, 0)
+      .setDisplaySize(width, height);
 
     this.lvl1Bg4 = this.add
       .tileSprite(width * 0.5, height * 0.5, 0, 0, TextureKey.Lvl1Bg4)
       .setScale(0.4)
-      .setScrollFactor(0, 0);
+      .setScrollFactor(0, 0)
+      .setDisplaySize(width, height);
 
     this.lvl1Bg5 = this.add
       .image(width * 0.5, height + 70, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
-      .setScale(0.4);
+      .setScale(0.4)
+      .setDisplaySize(width, height * 0.5);
   }
 
   addParallaxEffectForBackground() {
@@ -83,7 +88,7 @@ export default class Level1Scene extends Phaser.Scene {
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
     this.basicPlatforms.createFirstPlatform(0.3);
-    this.basicPlatforms.createPlatforms(6, 0.3);
+    this.basicPlatforms.createPlatforms(7, 0.3);
   }
 
   createExtraItems(): void {

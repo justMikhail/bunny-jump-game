@@ -13,7 +13,7 @@ export default class Player extends Unit {
     super(scene, x, y, skinTexture, frame);
 
     this.scene.events.on('update', this.update, this);
-    this.basicSpeed = 350;
+    this.basicSpeed = 300;
 
     // KEYS
     this.keyW = this.scene.input.keyboard.addKey('W');
