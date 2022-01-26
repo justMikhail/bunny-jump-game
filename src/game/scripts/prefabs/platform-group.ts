@@ -11,7 +11,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
 
   createFirstPlatform(scaleNumber) {
     const firstPlatform = PlatformItem
-      .generate(this.scene, this.scene.scale.width * 0.5, (this.scene.scale.height - 120), TextureKey.BrokenPlatform)
+      .generate(this.scene, this.scene.scale.width * 0.5, (this.scene.scale.height - 250), TextureKey.BrokenPlatform)
       .setScale(scaleNumber);
 
     this.add(firstPlatform);
@@ -22,7 +22,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
 
     for (let i = 0; i < platformsCount; i += 1) {
       const positionX = Phaser.Math.Between(0, width);
-      const positionY = 100 * i;
+      const positionY = 120 * i;
 
       const platformItem = PlatformItem
         .generate(this.scene, positionX, positionY, TextureKey.BasicPlatform)
@@ -39,7 +39,7 @@ export default class PlatformGroup extends Phaser.Physics.Arcade.StaticGroup {
       const { scrollY } = this.scene.cameras.main;
 
       if (platform.y >= scrollY + this.scene.scale.height) {
-        platform.y = scrollY - 150;
+        platform.y = scrollY - Phaser.Math.Between(50, 100);
       }
 
       platform.body.updateFromGameObject();

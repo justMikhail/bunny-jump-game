@@ -70,7 +70,7 @@ export default class Level1Scene extends Phaser.Scene {
       .setScrollFactor(0, 0);
 
     this.lvl1Bg5 = this.add
-      .image(width * 0.5, height, TextureKey.Lvl1Bg5)
+      .image(width * 0.5, height + 70, TextureKey.Lvl1Bg5)
       .setOrigin(0.5, 1)
       .setScale(0.4);
   }
@@ -83,7 +83,7 @@ export default class Level1Scene extends Phaser.Scene {
   createPlatforms(): void {
     this.basicPlatforms = new PlatformGroup(this);
     this.basicPlatforms.createFirstPlatform(0.3);
-    this.basicPlatforms.createPlatforms(7, 0.3);
+    this.basicPlatforms.createPlatforms(6, 0.3);
   }
 
   createExtraItems(): void {

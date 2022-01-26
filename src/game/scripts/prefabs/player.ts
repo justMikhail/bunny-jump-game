@@ -45,7 +45,7 @@ export default class Player extends Unit {
 
     const touchingDown = this.getBody().touching.down;
     if (touchingDown) {
-      this.getBody().setVelocityY(-this.basicSpeed);
+      this.getBody().setVelocityY(-this.basicSpeed * 1.5);
     }
 
     if (this.keyW?.isDown && !touchingDown) {
