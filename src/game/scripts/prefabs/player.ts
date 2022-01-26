@@ -41,8 +41,9 @@ export default class Player extends Unit {
   }
 
   addMovement(): void {
-    const touchingDown = this.getBody().touching.down;
+    this.getBody().setVelocityX(0);
 
+    const touchingDown = this.getBody().touching.down;
     if (touchingDown) {
       this.getBody().setVelocityY(-this.basicSpeed);
     }
