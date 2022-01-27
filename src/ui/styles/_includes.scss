@@ -1,6 +1,3 @@
-// Библиотеки
-@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss'; // Только reboot!
-@import 'node_modules/swiper/swiper-bundle.min';
-
-// Шрифты
-//@import '../fonts/Circe/stylesheet.css';
+// Third-party Libs
+@import '../../../node_modules/bootstrap/scss/bootstrap-reboot'; // "bootstrap-reboot!" only
+@import '../../../node_modules/swiper/swiper-bundle.min.css';

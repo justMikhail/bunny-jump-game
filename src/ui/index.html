@@ -19,18 +19,74 @@
 <body class="page">
 
 <header class="page__header header">
-  <h1 class="header__"></h1>
+  <div class="container">
+    <h1 class="header__title game-title">Bunny Jump Game</h1>
+  </div>
+  <!-- /.container -->
 </header>
 
 <main class="page__main main">
   <section class="main__game game">
-    <div id="phaser-game"></div>
+    <div class="container">
+      <div class="game__inner">
+        <div class="game__body" id="phaser-game"></div>
+      </div>
+      <!-- /.game__inner -->
+    </div>
+    <!-- /.container -->
   </section>
-  <section class="main__rules"></section>
-  <section class="main__social-network"></section>
+  <!-- /.game -->
+  <section class="main__rules rules">
+    <h2 class="rules__title">Game Rules</h2>
+    <!-- /.rules__title -->
+    <ul class="rules__list">
+      <li class="rules__item">Your Bunny automatically jumps from platform to platform to go higher.</li>
+      <li class="rules__item">There is no definitive end to the game, but the end for each gameplay session happens when the player falls to the bottom of the screen, jumps into a monster.</li>
+      <li class="rules__item">You can shoot carrots and hit the monster</li>
+      <!-- /.rules__item -->
+    </ul>
+    <!-- /.rules__text -->
+  </section>
+  <!-- /.rules -->
+  <section class="main__social-network social-network">
+    <ul class="social-network__list">
+      <li class="social-network__item">
+        <a class="social-media__link"
+           href="https://www.instagram.com/michaelboyhood/"
+           title="Follow me on Instagram"
+           aria-label="Instagram Link"
+        >
+        </a>
+      </li>
+      <!-- /.social-network__item -->
+      <li class="social-network__item">
+        <a class="social-media__link"
+           href="https://github.com/justMikhail"
+           title="View my Github Profile"
+           aria-label="Github Link"
+        >
+        </a>
+      </li>
+      <!-- /.social-network__item -->
+      <li class="social-network__item">
+        <a class="social-media__link"
+           href="https://t.me/just_Mikhail"
+           title="Connect with me on Telegram"
+           aria-label="Telegram"
+        >
+        </a>
+      </li>
+      <!-- /.social-network__item -->
+    </ul>
+    <!-- /.social-network__list -->
+  </section>
+  <!-- /.social-network -->
 </main>
+<!-- /.main -->
 
-<footer class="page__footer footer"></footer>
+<footer class="page__footer footer">
+
+</footer>
 
 <script src="/js/app.js?v=1.0.0"></script>
 <script src="/js/game.js?v=1.0.0"></script>

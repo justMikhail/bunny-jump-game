@@ -18,13 +18,13 @@ html {
 }
 
 body {
-  font-family: $userfont;
-  line-height: 100%;
-  color: $white;
-  background-color: $black;
-  overflow-x: hidden;
   height: auto;
   min-width: #{screen(xxs)};
+  overflow-x: hidden;
+  background-color: $black;
+  font-family: $user-font;
+  line-height: 100%;
+  color: $white;
 }
 
 h1,
@@ -35,8 +35,8 @@ h4 {
   margin: 0;
 }
 
-a:active, /* активная/посещенная ссылка */
-a:hover,  /* при наведении */
+a:active,
+a:hover,
 a {
   text-decoration: none;
   color: $white;
