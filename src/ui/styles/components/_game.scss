@@ -1,12 +1,20 @@
 .game {
 
   &__inner {
-
-  }
-
-  &__body {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__rules {
+    flex: 1 1 33.333%;
+  }
+
+  &__screen {
+    flex: 0 0 33.333%;
+  }
+
+  &__social-network {
+    flex: 1 1 33.333%;
   }
 }

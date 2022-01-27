@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- SEO tags -->
-  <title>Главная &bull; Phaser Starter</title>
+  <title>Game &bull; Bunny Jump</title>
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -26,61 +26,66 @@
 </header>
 
 <main class="page__main main">
-  <section class="main__game game">
+  <sectiom class="main__game game">
     <div class="container">
       <div class="game__inner">
-        <div class="game__body" id="phaser-game"></div>
+        <section class="game__rules game-rules">
+          <h2 class="game-rules__title">Game Rules</h2>
+          <!-- /.rules__title -->
+          <ul class="game-rules__list">
+            <li class="game-rules__item">Your Bunny automatically jumps from platform to platform to go higher.</li>
+            <li class="game-rules__item">There is no definitive end to the game, but the end for each gameplay session happens when the player falls to the bottom of the screen, jumps into a monster.</li>
+            <li class="game-rules__item">You can shoot carrots and hit the monster</li>
+            <!-- /.rules__item -->
+          </ul>
+          <!-- /.rules__text -->
+        </section>
+        <!-- /.rules -->
+        <section class="game__screen game-screen" id="game-screen">
+          <div class="game-screen__body" id="phaser-game"></div>
+          <!-- /.game__inner -->
+        </section>
+        <!-- /.game -->
+        <section class="game__social-network social-network">
+          <h1 class="social-network">Social Media</h1>
+          <!-- /.social-network -->
+          <ul class="social-network__list">
+            <li class="social-network__item">
+              <a class="social-media__link"
+                 href="https://www.instagram.com/michaelboyhood/"
+                 title="Follow me on Instagram"
+                 aria-label="Instagram Link"
+              >
+              </a>
+            </li>
+            <!-- /.social-network__item -->
+            <li class="social-network__item">
+              <a class="social-media__link"
+                 href="https://github.com/justMikhail"
+                 title="View my Github Profile"
+                 aria-label="Github Link"
+              >
+              </a>
+            </li>
+            <!-- /.social-network__item -->
+            <li class="social-network__item">
+              <a class="social-media__link"
+                 href="https://t.me/just_Mikhail"
+                 title="Connect with me on Telegram"
+                 aria-label="Telegram"
+              >
+              </a>
+            </li>
+            <!-- /.social-network__item -->
+          </ul>
+          <!-- /.social-network__list -->
+        </section>
+        <!-- /.social-network -->
       </div>
       <!-- /.game__inner -->
     </div>
     <!-- /.container -->
-  </section>
-  <!-- /.game -->
-  <section class="main__rules rules">
-    <h2 class="rules__title">Game Rules</h2>
-    <!-- /.rules__title -->
-    <ul class="rules__list">
-      <li class="rules__item">Your Bunny automatically jumps from platform to platform to go higher.</li>
-      <li class="rules__item">There is no definitive end to the game, but the end for each gameplay session happens when the player falls to the bottom of the screen, jumps into a monster.</li>
-      <li class="rules__item">You can shoot carrots and hit the monster</li>
-      <!-- /.rules__item -->
-    </ul>
-    <!-- /.rules__text -->
-  </section>
-  <!-- /.rules -->
-  <section class="main__social-network social-network">
-    <ul class="social-network__list">
-      <li class="social-network__item">
-        <a class="social-media__link"
-           href="https://www.instagram.com/michaelboyhood/"
-           title="Follow me on Instagram"
-           aria-label="Instagram Link"
-        >
-        </a>
-      </li>
-      <!-- /.social-network__item -->
-      <li class="social-network__item">
-        <a class="social-media__link"
-           href="https://github.com/justMikhail"
-           title="View my Github Profile"
-           aria-label="Github Link"
-        >
-        </a>
-      </li>
-      <!-- /.social-network__item -->
-      <li class="social-network__item">
-        <a class="social-media__link"
-           href="https://t.me/just_Mikhail"
-           title="Connect with me on Telegram"
-           aria-label="Telegram"
-        >
-        </a>
-      </li>
-      <!-- /.social-network__item -->
-    </ul>
-    <!-- /.social-network__list -->
-  </section>
-  <!-- /.social-network -->
+  </sectiom>
 </main>
 <!-- /.main -->
 
