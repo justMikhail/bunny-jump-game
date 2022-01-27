@@ -1,7 +1,5 @@
 export const DataBase = {
   GameContainerId: 'phaser-game',
-  DefaultScreenWidth: window.innerWidth,
-  DefaultScreenHeight: window.innerHeight,
   GravityForce: {
     BasicY: 400,
     BasicX: 0,

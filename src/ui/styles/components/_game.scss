@@ -7,14 +7,27 @@
   }
 
   &__rules {
-    flex: 1 1 33.333%;
+    flex: 1 1 30%;
   }
 
   &__screen {
-    flex: 0 0 33.333%;
+    flex: 0 0 40%;
+
+    @media (max-width: #{screen(xl)}) {
+      height: 900px;
+    }
+
+    @media (max-width: #{screen(lg)}) {
+      height: 900px;
+    }
+
+    @media (max-width: #{screen(md)}) {
+      height: 100vh;
+      flex: 0 0 100%;
+    }
   }
 
   &__social-network {
-    flex: 1 1 33.333%;
+    flex: 1 1 30%;
   }
 }

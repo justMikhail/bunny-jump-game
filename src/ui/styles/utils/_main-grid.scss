@@ -1,12 +1,10 @@
-$gap: 30px;
-
 .container {
   position: relative;
   width: 100%;
-  max-width: 1320px;
-  padding-left: calc(#{$gap} / 2);
-  padding-right: calc(#{$gap} / 2);
-  margin: auto;
+  max-width: 1680px;
+  padding-left: calc(#{$container-gap} / 2);
+  padding-right: calc(#{$container-gap} / 2);
+  margin: 0 auto;
 
   @media (max-width: #{screen(xl)}) {
     max-width: #{screen(lg)};

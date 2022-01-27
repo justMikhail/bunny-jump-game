@@ -11,8 +11,6 @@ import StartScene from './scenes/start-scene';
 import GameOverScene from './scenes/game-over-scene';
 import Level1Scene from './scenes/level-1-scene';
 
-type ScaleMode = 'FIT' | 'SMOOTH';
-
 const gameScreenInfo = document.getElementById('game-screen').getBoundingClientRect();
 const currentGameScreenWidth = gameScreenInfo.width;
 const currentGameScreenHeight = gameScreenInfo.height;
@@ -25,7 +23,8 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
     scale: {
       width: gameWidth,
       height: gameHeight,
-      mode: Phaser.Scale.FIT,
+      mode: Phaser.Scale.NONE,
+      // mode: Phaser.Scale.FIT,
       autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     physics: {

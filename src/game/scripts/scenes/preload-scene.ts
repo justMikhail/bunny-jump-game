@@ -56,6 +56,10 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   createBackground(): void {
-    this.add.sprite(DataBase.DefaultScreenWidth * 0.5, DataBase.DefaultScreenHeight * 0.5, TextureKey.StartMenuBg);
+    const { width, height } = this.scale;
+
+    this.add
+      .image(width * 0.5, height * 0.5, TextureKey.StartMenuBg)
+      .setDisplaySize(width, height);
   }
 }
