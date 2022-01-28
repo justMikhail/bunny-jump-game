@@ -1,33 +1,26 @@
 .game {
 
   &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  &__rules {
-    flex: 1 1 30%;
   }
 
   &__screen {
-    flex: 0 0 40%;
 
     @media (max-width: #{screen(xl)}) {
-      height: 900px;
     }
 
     @media (max-width: #{screen(lg)}) {
-      height: 900px;
     }
 
     @media (max-width: #{screen(md)}) {
-      height: 100vh;
-      flex: 0 0 100%;
     }
   }
 
+  &__rules {
+    display: none;
+  }
+
   &__social-network {
-    flex: 1 1 30%;
+    display: none;
   }
 }

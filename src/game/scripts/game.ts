@@ -11,9 +11,12 @@ import StartScene from './scenes/start-scene';
 import GameOverScene from './scenes/game-over-scene';
 import Level1Scene from './scenes/level-1-scene';
 
-const gameScreenInfo = document.getElementById('game-screen').getBoundingClientRect();
+const gameScreenElement = document.getElementById('game-screen');
+const gameScreenInfo = gameScreenElement.getBoundingClientRect();
 const currentGameScreenWidth = gameScreenInfo.width;
 const currentGameScreenHeight = gameScreenInfo.height;
+console.log(`Game Container Width: ${currentGameScreenWidth}`);
+console.log(`Game Container Height: ${currentGameScreenHeight}`);
 
 const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
   const mainGameConfig: Phaser.Types.Core.GameConfig = {
