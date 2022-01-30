@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-
+import { initUI } from './ui/ui';
 // Other
 import { DataBase } from './utils/data-base';
 import { GameColor } from './const/game-color';
@@ -53,5 +53,6 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+  initUI();
   initGame(DataBase.GameContainerId, currentGameScreenWidth, currentGameScreenHeight);
 });
