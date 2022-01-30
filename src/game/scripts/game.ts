@@ -7,7 +7,7 @@ import { GameColor } from './const/game-color';
 // Scenes
 import BootScene from './scenes/boot-scene';
 import PreloadScene from './scenes/preload-scene';
-import StartScene from './scenes/start-scene';
+import MainMenuScene from './scenes/main-menu-scene';
 import GameOverScene from './scenes/game-over-scene';
 import Level1Scene from './scenes/level-1-scene';
 
@@ -43,7 +43,7 @@ const initGame = (gameContainer, gameWidth: number, gameHeight: number) => {
     scene: [
       BootScene,
       PreloadScene,
-      StartScene,
+      MainMenuScene,
       Level1Scene,
       GameOverScene,
     ],
