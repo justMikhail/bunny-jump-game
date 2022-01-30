@@ -15,13 +15,3 @@ body {
 body.secondary-theme {
   @include mtc.update-theme('primary', #6200ee, 55%);
 }
-
-button {
-  color: mtc.color-contrast('primary');
-  background-color: mtc.color('primary');
-
-  &:hover {
-    color: mtc.color-contrast('primary', 700);
-    background-color: mtc.color('primary', 700, 92%);
-  }
-}

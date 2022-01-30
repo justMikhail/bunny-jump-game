@@ -78,8 +78,35 @@
           <div class="game-screen__ui game-screen-ui">
             <div class="container">
               <div class="game-screen-ui__start-menu">
-                <div class="game-screen-ui_choose-skin">
-                  Choose Skin Bloc
+                <div class="game-screen-ui_choose-skin choose-skin-slider">
+                  <h2 class="choose-skin-slider__title">Choose a character</h2>
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <div class="choose-skin-slider__item">
+                          <h4>Skin №1</h4>
+                          <img src="./img/player-skins/bunny-skin-1.png" alt="Bunny skin №1">
+                        </div>
+                        <!-- /.choose-skin-slider__item -->
+                      </div>
+                      <div class="swiper-slide">
+                        <div class="choose-skin-slider__item">
+                          <h4>Skin №2</h4>
+                          <img src="./img/player-skins/bunny-skin-2.png" alt="Bunny skin №2">
+                        </div>
+                        <!-- /.choose-skin-slider__item -->
+                      </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                  </div>
                 </div>
                 <!-- /.choose-skin -->
                 <button class="game-screen-ui__play-button primary-button">Play</button>
