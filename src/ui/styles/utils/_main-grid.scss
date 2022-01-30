@@ -2,23 +2,40 @@
   position: relative;
   width: 100%;
   max-width: 1680px;
-  padding-left: calc(#{$container-gap} / 2);
-  padding-right: calc(#{$container-gap} / 2);
+  min-width: 320px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0 auto;
 
-  @media (max-width: #{screen(xl)}) {
-    max-width: #{screen(lg)};
+  @media (min-width: #{screen(xxs)}) {
+    max-width: #{screen(xs)};
   }
 
-  @media (max-width: #{screen(lg)}) {
-    max-width: #{screen(md)};
-  }
-
-  @media (max-width: #{screen(md)}) {
+  @media (min-width: #{screen(xs)}) {
     max-width: #{screen(sm)};
   }
 
-  @media (max-width: #{screen(sm)}) {
-    max-width: #{screen(xs)};
+  @media (min-width: #{screen(sm)}) {
+    max-width: #{screen(md)};
+  }
+
+  @media (min-width: #{screen(md)}) {
+    max-width: #{screen(lg)};
+  }
+
+  @media (min-width: #{screen(lg)}) {
+    max-width: #{screen(xl)};
+  }
+
+  @media (min-width: #{screen(xl)}) {
+    max-width: #{screen(xxl)};
+  }
+
+  @media (min-width: #{screen(xxl)}) {
+    max-width: #{screen(retina)};
+  }
+
+  @media (min-width: #{screen(retina)}) {
+    max-width: #{screen(retina)};
   }
 }

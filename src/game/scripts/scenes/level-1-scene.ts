@@ -44,6 +44,9 @@ export default class Level1Scene extends Phaser.Scene {
     this.fpsCounter.update();
     this.setHorizontalWrapForSprite(this.player);
     this.addParallaxEffectForBackground();
+
+    /* track the maximum amount that the hero has travelled */
+    this.player.yChange = Math.max(this.player.yChange, Math.abs(this.player.y - this.player.yOrig));
   }
 
   createBackground(): void {
