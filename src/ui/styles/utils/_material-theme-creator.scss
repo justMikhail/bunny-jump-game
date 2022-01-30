@@ -1,0 +1,27 @@
+@use "~material-theme-creator/core" as mtc;
+
+// root variables initializing
+@include mtc.init();
+
+body {
+  // Creating a theme based on some color
+  // Passing arguments to the mixin:
+  //   1. theme name
+  //   2. some color
+  //   3. contrast threshold (for fonts)
+  @include mtc.create-variables-from-color('primary', #cc3300, 50%);
+}
+
+body.secondary-theme {
+  @include mtc.update-theme('primary', #6200ee, 55%);
+}
+
+button {
+  color: mtc.color-contrast('primary');
+  background-color: mtc.color('primary');
+
+  &:hover {
+    color: mtc.color-contrast('primary', 700);
+    background-color: mtc.color('primary', 700, 92%);
+  }
+}
