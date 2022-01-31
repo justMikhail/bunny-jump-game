@@ -57,54 +57,51 @@
           <!-- /.game-screen__body -->
           <div class="game-screen__ui game-screen-ui">
             <div class="container">
-              <div class="game-screen-ui__start-menu">
-                <a class="game-screen-ui__logo logo" href="#">
-                  <svg class="logo__icon" width="300px" height="138px">
+              <div class="game-screen-ui__start-menu start-menu">
+                <a class="start-menu__logo logo" href="#">
+                  <svg width="300px" height="138px">
                     <use xlink:href="#main-logo-icon"></use>
                   </svg>
                 </a>
                 <!-- /.logo -->
-                <div class="game-screen-ui_choose-skin choose-skin-slider">
-                  <h2 class="choose-skin-slider__title">Choose a character</h2>
-                  <div class="swiper" id="choose-skin-slider">
+
+                <div class="start-menu__skin-slider skin-slider">
+                  <h2 class="skin-slider__title">Choose a character</h2>
+                  <div class="swiper" id="skin-slider-id">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide">
-                        <div class="choose-skin-slider__item">
-                          <h4>Skin №1</h4>
-                          <img src="./img/player-skins/bunny-skin-1.png" alt="Bunny skin №1">
-                        </div>
+                        <article class="skin-slider__item skin-card">
+                          <h4 class="skin-card__title">Skin №1</h4>
+                          <div class="skin-card__preview">
+                            <img src="./img/player-skins/bunny-skin-1.png" alt="Bunny skin №1">
+                          </div>
+                        </article>
                         <!-- /.choose-skin-slider__item -->
                       </div>
                       <div class="swiper-slide">
-                        <div class="choose-skin-slider__item">
-                          <h4>Skin №2</h4>
-                          <img src="./img/player-skins/bunny-skin-2.png" alt="Bunny skin №2">
-                        </div>
+                        <article class="skin-slider__item skin-card">
+                          <h4 class="skin-card__title">Skin №1</h4>
+                          <div class="skin-card__preview">
+                            <img src="./img/player-skins/bunny-skin-2.png" alt="Bunny skin №2">
+                          </div>
+                        </article>
                         <!-- /.choose-skin-slider__item -->
                       </div>
                     </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
 
-                    <!-- If we need navigation buttons -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
-
-                    <!-- If we need scrollbar -->
-                    <div class="swiper-scrollbar"></div>
                   </div>
                 </div>
-                <!-- /.choose-skin -->
-                <button
-                  class="game-screen-ui__play-button primary-button"
-                  id="play-button"
-                >
-                  Play
-                </button>
-                <button class="game-screen-ui__sound-button game-ui__sound-button--mute secondary-button">Sound</button>
-                <button class="game-screen-ui__extra-button secondary-button">Extra</button>
+                <!-- /.skin-slider -->
+                <nav class="start-menu__nav">
+                  <button class="start-menu__play-button primary-button" id="play-button">Play</button>
+                  <button class="start-menu__sound-button secondary-button">Sound</button>
+                  <button class="start-menu__extra-button secondary-button">Extra</button>
+                </nav>
+                <!-- /.start-menu__nav -->
               </div>
-              <!-- /.game-ui__start-menu -->
+              <!-- /.game-screen-ui__start-menu -->
             </div>
           </div>
           <!-- /.game-screen-ui -->

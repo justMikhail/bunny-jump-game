@@ -1,0 +1,40 @@
+.start-menu {
+
+  &__logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  &__logo svg {
+    width: 220px;
+  }
+
+  &__skin-slider {
+    margin-bottom: 50px;
+    padding: 0 20px;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    padding: 25px;
+  }
+
+  &__play-button {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  &__sound-button {
+
+  }
+
+  &__extra-button {
+
+  }
+}

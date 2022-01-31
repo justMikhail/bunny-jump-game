@@ -9,9 +9,6 @@ body {
   //   1. theme name
   //   2. some color
   //   3. contrast threshold (for fonts)
-  @include mtc.create-variables-from-color('primary', #cc3300, 50%);
-}
-
-body.secondary-theme {
-  @include mtc.update-theme('primary', #6200ee, 55%);
+  @include mtc.create-variables-from-color('primary', #4e048a, 50%);
+  @include mtc.create-variables-from-color('secondary', #bd4e04, 50%);
 }

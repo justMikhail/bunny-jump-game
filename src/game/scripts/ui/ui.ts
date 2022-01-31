@@ -12,7 +12,7 @@ export const initUI = () => {
 
   // choose skin (slider)
   type ChooseSkinSliderElementType = HTMLElement & { swiper?: Swiper };
-  const chooseSkinSliderElement = document.querySelector<ChooseSkinSliderElementType>('#choose-skin-slider');
+  const chooseSkinSliderElement = document.querySelector<ChooseSkinSliderElementType>('#skin-slider-id');
   if (chooseSkinSliderElement?.swiper) {
     chooseSkinSliderElement.swiper.on('realIndexChange', (swiper) => {
       store.dispatch(commonUserSlice.actions.setCurrentSkin(swiper.realIndex));

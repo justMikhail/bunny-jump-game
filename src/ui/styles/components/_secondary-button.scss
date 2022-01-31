@@ -1,6 +1,10 @@
 .secondary-button {
   padding: 20px 20px;
-  background-color: var(--primary-200);
-  color: var(--primary-200-contrast);
+  background-color: var(--secondary-300);
+  color: var(--secondary-300-contrast);
   border-radius: 15px;
+
+  &:hover {
+    background-color: var(--secondary-400);
+  }
 }

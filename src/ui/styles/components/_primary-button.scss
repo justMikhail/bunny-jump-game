@@ -3,4 +3,8 @@
   background-color: var(--primary-500);
   color: var(--primary-500-contrast);
   border-radius: 15px;
+
+  &:hover {
+    background-color: var(--primary-700);
+  }
 }
