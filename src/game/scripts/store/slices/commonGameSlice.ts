@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const commonGameSlice = createSlice({
   name: 'commonGameState',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState: {
     isPlaying: false,
     isMute: false,

@@ -21,7 +21,7 @@ export default class MainMenuScene extends Phaser.Scene {
 
   connectToStore() {
     store.subscribe(() => {
-      const mainMenuSceneState = store.getState().commonGameState;
+      const mainMenuSceneState = store.getState().commonGameData;
 
       if (mainMenuSceneState?.isPlaying) {
         this.scene.start(SceneKeys.Level1);
