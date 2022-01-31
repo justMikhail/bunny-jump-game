@@ -11,7 +11,7 @@ export default class BootScene extends Phaser.Scene {
   fpsCounter;
 
   preload(): void {
-    this.load.image(TextureKey.StartMenuBg, '../img/sprites/backgrounds/start-menu/bg_lvl-1-sky.png');
+    this.load.image(TextureKey.StartMenuBg, '../img/sprites/backgrounds/start-menu/main-menu-bg.png');
   }
 
   create(): void {

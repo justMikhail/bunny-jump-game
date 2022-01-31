@@ -1,7 +1,7 @@
 export const TextureKey = {
   Player: {
     BasicSkin: 'player-basic-skin',
-    AlternativeSkin: 'player-alternative-skin',
+    AlternativeSkin: 'player-a-bunny-skin',
   },
 
   ExtraItem: {

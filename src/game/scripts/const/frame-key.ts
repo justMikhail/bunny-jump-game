@@ -1,13 +1,7 @@
 export const FrameKey = {
   Player: {
-    BasicSkin: {
-      Ready: 'bunny_1_ready',
-      Jump: 'bunny_2_jump',
-    },
-    AlternativeSkin: {
-      Ready: 'bunny_2_ready',
-      Jump: 'bunny_2_jump',
-    },
+    Ready: 'bunny_ready',
+    Jump: 'bunny_jump',
   },
   ExtraItem: {
     Spring: {

@@ -14,7 +14,6 @@ export const initUI = () => {
   const chooseSkinSliderElement = document.querySelector<ChooseSkinSliderElementType>('#choose-skin-slider');
   if (chooseSkinSliderElement?.swiper) {
     chooseSkinSliderElement.swiper.on('realIndexChange', (swiper) => {
-      console.log(swiper.realIndex);
       store.dispatch(commonGameSlice.actions.chooseSkin(swiper.realIndex));
     });
   }

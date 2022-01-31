@@ -29,7 +29,6 @@ export default class Player extends Unit {
     this.getBody().checkCollision.right = false;
 
     // ANIMS
-    this.initAnimations();
   }
 
   static generate(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string) {
@@ -46,12 +45,12 @@ export default class Player extends Unit {
     const touchingDown = this.getBody().touching.down;
     if (touchingDown) {
       this.getBody().setVelocityY(-this.basicSpeed * 1.5);
-      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.AlternativeSkin.Jump);
+      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.Jump);
     }
 
     const vy = this.getBody().velocity.y;
     if (vy > 0) {
-      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.AlternativeSkin.Ready);
+      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.Ready);
     }
 
     if (this.keyW?.isDown && !touchingDown) {
@@ -74,19 +73,5 @@ export default class Player extends Unit {
         }
       }, true);
     }
-  }
-
-  private initAnimations(): void {
-    const generatedWalkFrames = this.scene.anims.generateFrameNames(TextureKey.Player.AlternativeSkin, {
-      prefix: 'bunny_2_walk_',
-      start: 1,
-      end: 2,
-    });
-
-    this.scene.anims.create({
-      key: FrameKey.Player.AlternativeSkin.Jump,
-      frames: generatedWalkFrames,
-      frameRate: 8,
-    });
   }
 }

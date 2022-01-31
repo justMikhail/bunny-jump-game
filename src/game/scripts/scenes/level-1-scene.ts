@@ -109,7 +109,7 @@ export default class Level1Scene extends Phaser.Scene {
         positionX,
         positionY,
         TextureKey.Player.AlternativeSkin,
-        FrameKey.Player.AlternativeSkin.Ready,
+        FrameKey.Player.Ready,
       )
       .setScale(0.4);
   }
