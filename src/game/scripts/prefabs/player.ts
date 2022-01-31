@@ -1,8 +1,8 @@
 import { Unit } from './unit';
 import { FrameKey } from '../const/frame-key';
-import { TextureKey } from '../const/texture-key';
 
 export default class Player extends Unit {
+  private currentSkinTexture;
   private keyW: Phaser.Input.Keyboard.Key;
   private keyA: Phaser.Input.Keyboard.Key;
   private keyS: Phaser.Input.Keyboard.Key;
@@ -12,6 +12,7 @@ export default class Player extends Unit {
   constructor(scene: Phaser.Scene, x: number, y: number, skinTexture: string, frame?: string) {
     super(scene, x, y, skinTexture, frame);
 
+    this.currentSkinTexture = skinTexture;
     this.scene.events.on('update', this.update, this);
     this.basicSpeed = 300;
 
@@ -45,12 +46,12 @@ export default class Player extends Unit {
     const touchingDown = this.getBody().touching.down;
     if (touchingDown) {
       this.getBody().setVelocityY(-this.basicSpeed * 1.5);
-      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.Jump);
+      this.setTexture(this.currentSkinTexture, FrameKey.Player.Jump);
     }
 
     const vy = this.getBody().velocity.y;
     if (vy > 0) {
-      this.setTexture(TextureKey.Player.AlternativeSkin, FrameKey.Player.Ready);
+      this.setTexture(this.currentSkinTexture, FrameKey.Player.Ready);
     }
 
     if (this.keyW?.isDown && !touchingDown) {

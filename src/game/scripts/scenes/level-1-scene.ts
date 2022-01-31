@@ -8,11 +8,12 @@ import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
 import SpringItem from '../prefabs/spring-item';
-import {store} from '../store/store';
+import { store } from '../store/store';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
   player;
+  currentPlayerSkin;
   basicPlatforms: PlatformGroup;
   spring;
   springGroup;
@@ -29,7 +30,6 @@ export default class Level1Scene extends Phaser.Scene {
   create(): void {
     const { width, height } = this.scale;
     console.log('level-1-scene');
-    this.connectToStore();
     this.createBackground();
     this.createPlatforms();
     this.createExtraItems();
@@ -49,18 +49,6 @@ export default class Level1Scene extends Phaser.Scene {
 
     /* track the maximum amount that the hero has travelled */
     // this.player.yChange = Math.max(this.player.yChange, Math.abs(this.player.y - this.player.yOrig));
-  }
-
-  connectToStore() {
-    store.subscribe(() => {
-      const mainMenuSceneState = store.getState().commonGameData;
-
-      if (mainMenuSceneState?.isPlaying) {
-        this.scene.start(SceneKeys.Level1);
-      } else {
-        console.log('Ставим игру на паузу');
-      }
-    });
   }
 
   createBackground(): void {
@@ -117,12 +105,20 @@ export default class Level1Scene extends Phaser.Scene {
   }
 
   createPlayer(positionX, positionY): void {
+    if (store.getState().commonUserData.currentUserSkinId === 0) {
+      this.currentPlayerSkin = TextureKey.Player.BasicSkin.Key;
+    } else if (store.getState().commonUserData.currentUserSkinId === 1) {
+      this.currentPlayerSkin = TextureKey.Player.AlternativeSkin.Key;
+    }
+
+    console.log(this.currentPlayerSkin);
+
     this.player = Player
       .generate(
         this,
         positionX,
         positionY,
-        TextureKey.Player.AlternativeSkin,
+        this.currentPlayerSkin,
         FrameKey.Player.Ready,
       )
       .setScale(0.4);
