@@ -12,9 +12,10 @@ export const initUI = () => {
 
   const chooseSkinSliderElement = document.querySelector<ChooseSkinSliderElementType>('#choose-skin-slider');
   if (chooseSkinSliderElement?.swiper) {
-    chooseSkinSliderElement.swiper.on('activeIndexChange', (swiper) => {
-      console.log(swiper.activeIndex);
-      console.log(Date.now());
+    chooseSkinSliderElement.swiper.on('realIndexChange', (swiper) => {
+      // console.log(swiper.activeIndex);
+      // console.log(swiper.clickedIndex);
+      console.log(swiper.realIndex);
     });
   }
 };
