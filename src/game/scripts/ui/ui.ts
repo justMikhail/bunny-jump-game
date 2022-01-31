@@ -1,6 +1,7 @@
 import Swiper from 'swiper';
 import { store } from '../store/store';
 import { commonGameSlice } from '../store/slices/commonGameSlice';
+import { commonUserSlice } from '../store/slices/commomUserSlice';
 
 export const initUI = () => {
   // play button
@@ -14,7 +15,7 @@ export const initUI = () => {
   const chooseSkinSliderElement = document.querySelector<ChooseSkinSliderElementType>('#choose-skin-slider');
   if (chooseSkinSliderElement?.swiper) {
     chooseSkinSliderElement.swiper.on('realIndexChange', (swiper) => {
-      store.dispatch(commonGameSlice.actions.chooseSkin(swiper.realIndex));
+      store.dispatch(commonUserSlice.actions.setCurrentSkin(swiper.realIndex));
     });
   }
 

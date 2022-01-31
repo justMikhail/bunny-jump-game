@@ -8,6 +8,7 @@ import CounterFps from '../prefabs/counter-fps';
 import PlatformGroup from '../prefabs/platform-group';
 import Player from '../prefabs/player';
 import SpringItem from '../prefabs/spring-item';
+import {store} from '../store/store';
 
 export default class Level1Scene extends Phaser.Scene {
   fpsCounter;
@@ -28,6 +29,7 @@ export default class Level1Scene extends Phaser.Scene {
   create(): void {
     const { width, height } = this.scale;
     console.log('level-1-scene');
+    this.connectToStore();
     this.createBackground();
     this.createPlatforms();
     this.createExtraItems();
@@ -46,7 +48,19 @@ export default class Level1Scene extends Phaser.Scene {
     this.addParallaxEffectForBackground();
 
     /* track the maximum amount that the hero has travelled */
-    this.player.yChange = Math.max(this.player.yChange, Math.abs(this.player.y - this.player.yOrig));
+    // this.player.yChange = Math.max(this.player.yChange, Math.abs(this.player.y - this.player.yOrig));
+  }
+
+  connectToStore() {
+    store.subscribe(() => {
+      const mainMenuSceneState = store.getState().commonGameData;
+
+      if (mainMenuSceneState?.isPlaying) {
+        this.scene.start(SceneKeys.Level1);
+      } else {
+        console.log('Ставим игру на паузу');
+      }
+    });
   }
 
   createBackground(): void {

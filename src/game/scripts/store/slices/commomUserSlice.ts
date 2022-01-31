@@ -5,15 +5,16 @@ export const commonUserSlice = createSlice({
   initialState: {
     userName: 'stranger',
     userScore: 0,
+    currentUserSkin: null,
   },
   reducers: {
-    playGame: (state, action) => {
+    setUserName: (state, action) => {
       // eslint-disable-next-line no-param-reassign
       state.userName = action.payload;
     },
-    chooseSkin: (state, action) => {
+    setCurrentSkin: (state, action) => {
       // eslint-disable-next-line no-param-reassign
-      state.userScore = action.payload;
+      state.currentUserSkin = action.payload;
     },
   },
 });

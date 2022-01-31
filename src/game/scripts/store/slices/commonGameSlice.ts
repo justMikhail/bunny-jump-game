@@ -5,16 +5,11 @@ export const commonGameSlice = createSlice({
   initialState: {
     isPlaying: false,
     isMute: false,
-    basicSkin: null,
   },
   reducers: {
     playGame: (state) => {
       // eslint-disable-next-line no-param-reassign
       state.isPlaying = true;
-    },
-    chooseSkin: (state, action) => {
-      // eslint-disable-next-line no-param-reassign
-      state.basicSkin = action.payload;
     },
     pauseGame: (state) => {
       // eslint-disable-next-line no-param-reassign
