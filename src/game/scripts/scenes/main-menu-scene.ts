@@ -1,9 +1,9 @@
 import * as Phaser from 'phaser';
 
-import { SceneKeys } from '../const/scene-keys';
-
-import { TextureKey } from '../const/texture-key';
 import { store } from '../store/store';
+
+import { SceneKeys } from '../const/scene-keys';
+import { TextureKey } from '../const/texture-key';
 
 export default class MainMenuScene extends Phaser.Scene {
   constructor() {
@@ -12,9 +12,8 @@ export default class MainMenuScene extends Phaser.Scene {
 
   create(): void {
     console.log('main-menu-scene');
-    this.createBackground();
-
     this.connectToStore();
+    this.createBackground();
   }
 
   static update(): void {
@@ -27,7 +26,7 @@ export default class MainMenuScene extends Phaser.Scene {
       if (mainMenuSceneState?.isPlaying) {
         this.scene.start(SceneKeys.Level1);
       } else {
-        console.log('Остаемся на сцене Меню');
+        console.log('Ставим игру на паузу');
       }
     });
   }
